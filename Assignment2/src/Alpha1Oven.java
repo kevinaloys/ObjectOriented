@@ -1,16 +1,17 @@
 /**
  *@author Kevin Aloysius 
+ *
  */
 
 public class Alpha1Oven
 {
 	
-	private StatusType status;
-	private int cookingTemp;
-	private long cookingTimeInMinutes;
-	private OvenThermostat thermostat;
+	protected StatusType status;
+	protected int cookingTemp;
+	protected long cookingTimeInMinutes;
+	protected OvenThermostat thermostat;
 	private long startTime;
-	private boolean itemPlaced;
+	protected boolean itemPlaced;
 	
 	Alpha1Oven()
 	{
@@ -69,11 +70,11 @@ public class Alpha1Oven
 	
 	public void showOvenStatus()
 	{
-		System.out.println("Oven Name       : " + getOvenName());
-		System.out.println("Oven Status     : " + status);
-		System.out.println("Start Time      : " + startTime);
-		System.out.println("Set Temperature : " + thermostat.getTemperatureInF() + "\u00b0" +"F");
-		System.out.println("Stop Time       : " + (((long)cookingTimeInMinutes * 60 * 1000) + startTime));
+		System.out.println("Oven Name       	 : " + getOvenName());
+		System.out.println("Oven Status     	 : " + status);
+		System.out.println("Start Time      	 : " + startTime);
+		System.out.println("Set Temperature in F 	 : " + thermostat.getTemperatureInF() + "\u00b0" +"F");
+		System.out.println("Stop Time       	 : " + (((long)cookingTimeInMinutes * 60 * 1000) + startTime));
 	}
 	
 	private String getOvenName()

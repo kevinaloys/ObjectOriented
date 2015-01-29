@@ -7,5 +7,12 @@ public class SmartOvenApplication
 		alpha.setTime(3);
 		alpha.start();
 		alpha.showOvenStatus();
+		System.out.println();
+		Alpha2Oven beta = new Alpha2Oven();
+		beta.placeFood();
+		beta.setTime(4);
+		beta.setTemperatureInC(35);
+		beta.start();
+		beta.showOvenStatus();
 	}
 }
