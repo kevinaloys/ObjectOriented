@@ -1,3 +1,5 @@
+import edu.scu.oop.assign2.*;
+
 public class SmartOvenApplication
 {
 	public static void main(String args[])
