@@ -1,4 +1,7 @@
 package edu.scu.oop.assign2;
+/**
+ * @author Kevin Aloysius
+ */
 public class OvenThermostat implements TempRegulator
 {
 	private int currentTemperature;

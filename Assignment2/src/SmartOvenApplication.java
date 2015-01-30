@@ -1,4 +1,9 @@
 import edu.scu.oop.assign2.*;
+/**
+ *@author Kevin Aloysius 
+ *@version 1.0.0
+ *@category Home Appliances
+ */
 
 public class SmartOvenApplication
 {
@@ -6,14 +11,13 @@ public class SmartOvenApplication
 	{
 		Alpha1Oven alpha = new Alpha1Oven();
 		alpha.setTemperature(223);
-		alpha.setTime(3);
+		alpha.setTime(10);
 		alpha.start();
 		alpha.showOvenStatus();
 		System.out.println();
 		Alpha2Oven beta = new Alpha2Oven();
 		beta.placeFood();
-		beta.setTime(4);
-		beta.setTemperatureInC(35);
+		beta.setTemperatureInC(-35);
 		beta.start();
 		beta.showOvenStatus();
 	}
