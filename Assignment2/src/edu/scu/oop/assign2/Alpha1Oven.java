@@ -1,4 +1,5 @@
 package edu.scu.oop.assign2;
+
 /**
  *@author Kevin Aloysius 
  *
@@ -57,9 +58,16 @@ public class Alpha1Oven
 	
 	public void setTime(int cookingTime)
 	{
-		
-		cookingTimeInMinutes = cookingTime;
-		startTime = System.currentTimeMillis();
+		if (cookingTime <= 0)
+		{
+			cookingTimeInMinutes = 0;
+			startTime = 0;
+		}
+		else
+		{
+			cookingTimeInMinutes = cookingTime;
+			startTime = System.currentTimeMillis();
+		}
 	}
 	
 	public void placeFood()
@@ -110,10 +118,11 @@ public class Alpha1Oven
 	
 	private static String displayTimeInHumanReadable(long millisec)
 	{
+		String time = new String();
 		int seconds = (int) ((millisec % (1000 * 60 * 60)) % (1000 * 60)) / 1000;
 		int minutes = (int) (millisec % (1000 * 60 * 60)) / (1000 * 60);
-		int hours	= (int) ((millisec / (1000 * 60 * 60) ) % 24) - 8;
-		String time = hours + " hours " + minutes + " mintues " + seconds + " seconds";
+		int hours	= (int) ((millisec / (1000 * 60 * 60) ) % 24);
+		time = hours + " hours " + minutes + " mintues " + seconds + " seconds";
 		return time;
 	}
 }
