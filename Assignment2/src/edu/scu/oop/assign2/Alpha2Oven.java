@@ -54,18 +54,18 @@ public class Alpha2Oven extends Alpha1Oven
 				}
 				else
 				{
-					System.out.println("Temperature and Time are not set.");
+					System.out.println("Temperature and Time are not set!");
 				}
 			}
 			else
 			{
 				if(placed == false)
 				{
-					System.out.println("Temperature is not set. Food is not placed");
+					System.out.println("Temperature is not set. Food is not placed!");
 				}
 				else
 				{
-					System.out.println("Temperature is not set.");
+					System.out.println("Temperature is not set!");
 				}
 			}
 		}
@@ -75,18 +75,18 @@ public class Alpha2Oven extends Alpha1Oven
 			{
 				if(placed == false)
 				{
-					System.out.println("Time is not set. Food is not placed.");
+					System.out.println("Time is not set. Food is not placed!");
 				}
 				else
 				{
-					System.out.println("Time is not set.");
+					System.out.println("Time is not set!");
 				}
 			}
 			else
 			{
 				if(placed == false)
 				{
-					System.out.println("Food is not placed.");
+					System.out.println("Food is not placed!");
 				}
 			}
 		}
