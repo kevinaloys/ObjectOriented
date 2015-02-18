@@ -90,7 +90,14 @@ public class Alpha2Oven extends Alpha1Oven
 	public void showOvenStatus()
 	{
 		super.showOvenStatus();
-		System.out.println("Set Temperature in C 	 : " + thermostat.getTemperatureInC() + "\u00b0" +"C");
+		if (thermostat.getTemperatureInF() <= 0)
+		{
+			System.out.println("Set Temperature in C 	 : " + "0" + "\u00b0" +"C");
+		}
+		else
+		{
+			System.out.println("Set Temperature in C 	 : " + thermostat.getTemperatureInC() + "\u00b0" +"C");
+		}
 		System.out.println("Cooking Mode		 : " + currentMode);
 		System.out.println("Item Placed	         : " + itemPlaced);
 	}

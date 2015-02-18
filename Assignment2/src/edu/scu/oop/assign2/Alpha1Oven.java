@@ -121,7 +121,8 @@ public class Alpha1Oven
 	{
 		status = StatusType.off;
 		itemPlaced = false;
-		cookingTemp = 0;
+		thermostat.setTemperatureInF(0);
+		cookingTemp = thermostat.getTemperatureInF();
 		cookingTimeInMinutes = 0;
 		startTime = 0;
 	}
@@ -194,9 +195,9 @@ public class Alpha1Oven
 	private static String displayTimeInHumanReadable(long millisec)
 	{
 		String time = new String();
-		int seconds = (int) ((millisec % (1000 * 60 * 60)) % (1000 * 60)) / 1000;
-		int minutes = (int) (millisec % (1000 * 60 * 60)) / (1000 * 60);
-		int hours	= (int) ((millisec / (1000 * 60 * 60) ) % 24);
+		int seconds = (int) ((millisec % (1000 * 60 * 60)) % (1000 * 60)) / 1000; //Conversion from milliseconds to seconds
+		int minutes = (int) (millisec % (1000 * 60 * 60)) / (1000 * 60);		  //Conversion from milliseconds to minutes
+		int hours	= (int) ((millisec / (1000 * 60 * 60) ) % 24);                //Conversion from milliseconds to hours
 		time = hours + " hours " + minutes + " mintues " + seconds + " seconds";
 		return time;
 	}
