@@ -1,10 +1,13 @@
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
 import edu.scu.oop.assign2.*;
 
 public class SmartOvenApplication
 {
 	public static void main(String args[])
 	{
-		Alpha1Oven a = new Alpha1Oven();
+		/*Alpha1Oven a = new Alpha1Oven();
 		a.showOvenStatus();
 		System.out.println();
 		
@@ -42,6 +45,15 @@ public class SmartOvenApplication
 		lambda.showOvenStatus();
 		System.out.println();
 		lambda.clear();
-		lambda.showOvenStatus();
+		lambda.showOvenStatus();*/
+		
+		SwingUtilities.invokeLater(new Runnable()
+		{
+			public void run()
+			{
+				new MainFrame();
+			}
+		});
+		
 	}
 }
