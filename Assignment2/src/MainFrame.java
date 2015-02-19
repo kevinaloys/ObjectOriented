@@ -3,8 +3,12 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
+/**
+ * 
+ * @author Kevin Aloysius
+ *
+ */
 public class MainFrame extends JFrame{
-	
 
 	private SideBar sidebar;
 	

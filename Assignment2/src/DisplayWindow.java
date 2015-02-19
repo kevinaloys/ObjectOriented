@@ -6,7 +6,11 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
+/**
+ * 
+ * @author Kevin Aloysius
+ *
+ */
 public class DisplayWindow extends JPanel {
 	JLabel fahrenheit;
 	JLabel celsius;

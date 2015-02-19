@@ -3,6 +3,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author Kevin Aloysius
+ *
+ */
 
 public class SideBar extends JPanel {
 	
