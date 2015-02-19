@@ -20,7 +20,7 @@ public class DisplayWindow extends JPanel {
 	public DisplayWindow()
 	{
 		fahrenheit = new JLabel("Fahrenheit");
-		celsius = new JLabel("Celsuis");
+		celsius = new JLabel("Celsius");
 		displayFahrenheit = new JLabel("300 \u00b0F");
 		displayCelsius = new JLabel("148.88 \u00b0C");
 		fahrenheit.setForeground(new Color(185,188,209));
