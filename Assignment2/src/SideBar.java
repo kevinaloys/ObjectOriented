@@ -19,15 +19,16 @@ public class SideBar extends JPanel {
 		sidebartop = new SideBarTop();
 		sidebarmiddle = new SideBarMiddle();
 		sidebarbottom = new SideBarBottom();
+		
 		setLayout(new BorderLayout());
 		
 		//Add Size and Background
-		sidebartop.setPreferredSize(new Dimension(250, 100));
+		sidebartop.setPreferredSize(new Dimension(250, 90));
 		sidebartop.setBackground(new Color(219, 221, 222));
-		sidebarmiddle.setPreferredSize(new Dimension(250, 400));
-		sidebarmiddle.setBackground(new Color(36, 40, 71));
-		sidebarbottom.setPreferredSize(new Dimension(250, 100));
+
+		sidebarbottom.setPreferredSize(new Dimension(250, 70));
 		sidebarbottom.setBackground(new Color(201, 66, 52));
+				
 		//Add components
 		add(sidebartop, BorderLayout.NORTH);
 		add(sidebarmiddle, BorderLayout.CENTER);
