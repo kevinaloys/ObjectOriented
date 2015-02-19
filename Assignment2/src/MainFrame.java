@@ -27,7 +27,7 @@ public class MainFrame extends JFrame{
 		add(sidebar, BorderLayout.WEST);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		setSize(1000, 800);
+		setSize(950, 900);
 		
 		
 	}
