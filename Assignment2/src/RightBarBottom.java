@@ -1,3 +1,5 @@
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -20,6 +22,28 @@ public class RightBarBottom extends JPanel {
 		eight = new JButton("8");
 		nine = new JButton("9");
 		zero = new JButton("0");
+		
+		one.setPreferredSize(new Dimension(100,100));
+		two.setPreferredSize(new Dimension(100,100));
+		three.setPreferredSize(new Dimension(100,100));
+		four.setPreferredSize(new Dimension(100,100));
+		five.setPreferredSize(new Dimension(100,100));
+		six.setPreferredSize(new Dimension(100,100));
+		seven.setPreferredSize(new Dimension(100,100));
+		eight.setPreferredSize(new Dimension(100,100));
+		nine.setPreferredSize(new Dimension(100,100));
+		zero.setPreferredSize(new Dimension(100,100));
+		
+		one.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.BOLD, 30));
+		two.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.BOLD, 30));
+		three.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.BOLD, 30));
+		four.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.BOLD, 30));
+		five.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.BOLD, 30));
+		six.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.BOLD, 30));
+		seven.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.BOLD, 30));
+		eight.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.BOLD, 30));
+		nine.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.BOLD, 30));
+		zero.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.BOLD, 30));
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
