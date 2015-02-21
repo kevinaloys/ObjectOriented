@@ -9,8 +9,9 @@ import java.util.Date;
 import java.text.DateFormat;
 
 public class RightBarTop extends JPanel {
-	private JLabel systemtime;
+	private JLabel systemdate;
 	private JLabel timeRemaining;
+	private JLabel systemtime;
 	
 	private static String getDate()
 	{
@@ -19,12 +20,14 @@ public class RightBarTop extends JPanel {
 		String datestring = dateformat.format(date);
 		return datestring;
 	}
+	
+	
 	public RightBarTop()
 	{
-		systemtime = new JLabel(getDate());
+		systemdate = new JLabel(getDate());
 		timeRemaining = new JLabel("42");
 		
-		systemtime.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.BOLD, 40));
+		systemdate.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.BOLD, 40));
 		timeRemaining.setFont(Utils.createFont("/fonts/Ubuntu-B.ttf").deriveFont(Font.BOLD, 150));
 		setLayout(new GridBagLayout());
 		
@@ -35,7 +38,7 @@ public class RightBarTop extends JPanel {
 		gc.weighty = 0;
 		gc.fill = GridBagConstraints.NONE;
 		gc.insets = new Insets(40,0,0,0);
-		add(systemtime, gc);
+		add(systemdate, gc);
 		
 		gc.gridx = 0;
 		gc.gridy = 1;
