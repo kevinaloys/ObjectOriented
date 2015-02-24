@@ -41,4 +41,11 @@ public class SideBar extends JPanel {
 	{
 		sidebarmiddle.appendTemperatureField(number);
 	}
+	
+	public void setDataListener(DataListener listener)
+	{
+		sidebartop.setDataListener(listener);
+		sidebarmiddle.setDataListener(listener);
+		sidebarbottom.setDataListener(listener);
+	}
 }

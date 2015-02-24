@@ -13,8 +13,7 @@ public class MainFrame extends JFrame{
 
 	private SideBar sidebar;
 	private RightBar rightbar;
-	
-	
+		
 	public MainFrame()
 	{
 		super("Alpha2Oven");
@@ -38,7 +37,10 @@ public class MainFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		setSize(950, 900);
-	
+		
+		
+		
+		//Listener for Keypad events
 		rightbar.setStringListener(new StringListener()
 		{
 			//Receiving Events from RigtBarBottom for
@@ -48,8 +50,35 @@ public class MainFrame extends JFrame{
 				appendTemperatureField(text);
 			}
 			
+			public void placed(String text)
+			{
+				System.out.println(text);
+			}
+			
+			public void start(String text)
+			{
+				System.out.println(text);
+			}
 		});
+		
+		
+		sidebar.setDataListener(new DataListener()
+		{
+			public void time(int time)
+			{
+				System.out.println(time);
+			}
+			
+			public void temperatureIn(String tempUnit)
+			{
+				System.out.println(tempUnit);
+			}
+		});		
+		
 	}
+	
+	
+	
 	
 	//Responsible for appending the Temperature in JTextField of
 	//temperature field in DataWindow

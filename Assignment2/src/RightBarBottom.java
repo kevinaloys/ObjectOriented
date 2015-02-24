@@ -234,5 +234,19 @@ public class RightBarBottom extends JPanel implements ActionListener {
 			}
 			
 		}
+		else if (clicked == place)
+		{
+			if(textListener != null)
+			{
+				textListener.placed("placed");
+			}
+		}
+		else if (clicked == start)
+		{
+			if(textListener != null)
+			{
+				textListener.start("start");
+			}
+		}
 	}
 }

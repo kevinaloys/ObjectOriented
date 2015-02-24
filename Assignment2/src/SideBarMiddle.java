@@ -12,7 +12,9 @@ import javax.swing.JPanel;
 public class SideBarMiddle extends JPanel {
 	private DataWindow datawindow;
 	private DisplayWindow displaywindow;
-	 
+	
+	private DataListener datalistener;
+	
 	public SideBarMiddle()
 	{	 
 		datawindow = new DataWindow();
@@ -35,5 +37,10 @@ public class SideBarMiddle extends JPanel {
 	public void appendTemperatureField(String number)
 	{
 		datawindow.appendTemperatureField(number);
+	}
+	
+	public void setDataListener(DataListener listener)
+	{
+		datawindow.setDataListener(listener);
 	}
 }

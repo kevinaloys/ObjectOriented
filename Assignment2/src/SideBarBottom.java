@@ -17,6 +17,8 @@ public class SideBarBottom extends JPanel {
 	private JLabel message;
 	private Border whiteBorder;
 	
+	private DataListener datalistener;
+	
 	public SideBarBottom()
 	{
 		message = new JLabel("Oven Message");
@@ -29,5 +31,10 @@ public class SideBarBottom extends JPanel {
 		bake.setLocation(200, 15);
 		setLayout(new FlowLayout());*/
 		add(message, BorderLayout.CENTER);
+	}
+	
+	public void setDataListener(DataListener listener)
+	{
+		this.datalistener = listener;
 	}
 }

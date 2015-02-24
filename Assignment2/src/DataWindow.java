@@ -4,8 +4,12 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -13,19 +17,26 @@ import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 /**
  * 
  * @author Kevin Aloysius
  *
  */
 
-public class DataWindow extends JPanel {
+public class DataWindow extends JPanel implements ActionListener {
 	private JLabel temperature;
 	private JLabel time;
 	private JTextField temperatureField;
 	private JSlider timeField;
 	private JRadioButton fahrenheit;
 	private JRadioButton celsius;
+	
+	private DataListener dataListener;
+	private int timeValue;
+	private ButtonGroup group;
 	
 	public DataWindow()
 	{
@@ -63,7 +74,7 @@ public class DataWindow extends JPanel {
 		time.setForeground(new Color(185, 188, 209));
 		timeField.setBackground(Color.RED);
 		timeField.setForeground(new Color(185, 188, 209));
-		fahrenheit.setForeground(new Color(185, 188, 209));
+		fahrenheit.setForeground(new Color(185, 188, 209)); 
 		celsius.setForeground(new Color(185, 188, 209));
 		
 		ButtonGroup group = new ButtonGroup();
@@ -74,6 +85,15 @@ public class DataWindow extends JPanel {
 		fahrenheit.setActionCommand("fahrenheit");
 		celsius.setActionCommand("celsius");
 		
+		timeField.addChangeListener(new ChangeListener() {
+		      public void stateChanged(ChangeEvent event) {
+		        int timeValue = timeField.getValue();
+		        if(dataListener != null)
+				{
+					dataListener.time(timeValue);
+				}
+		      }
+		    });
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
@@ -121,11 +141,31 @@ public class DataWindow extends JPanel {
 		gc.weighty = 0;
 		gc.fill = GridBagConstraints.NONE;
 		add(timeField, gc);
+		
+		
+	}
+	
+	public void setDataListener(DataListener listener)
+	{
+		this.dataListener = listener;
 	}
 	
 	public void appendTemperatureField(String number)
 	{
 		temperatureField.setText(temperatureField.getText() + number);
 	}
+
+	
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == fahrenheit)
+		{
+			if (dataListener != null)
+			{
+				dataListener.temperatureIn("fahrenheit");
+			}
+		}
+		
+	}
+	
 	
 }

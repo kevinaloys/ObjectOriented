@@ -10,6 +10,8 @@ public class SideBarTop extends JPanel {
 	
 	private JLabel status;
 	private JLabel power;
+	
+	private DataListener datalistener;
 	public SideBarTop()
 	{
 		
@@ -34,5 +36,10 @@ public class SideBarTop extends JPanel {
 		gc.weighty = 0;
 		gc.fill = GridBagConstraints.NONE;
 		add(power, gc);
+	}
+	
+	public void setDataListener(DataListener listener)
+	{
+		this.datalistener = listener;
 	}
 }
