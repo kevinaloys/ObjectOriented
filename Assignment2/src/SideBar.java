@@ -36,4 +36,9 @@ public class SideBar extends JPanel {
 		add(sidebarmiddle, BorderLayout.CENTER);
 		add(sidebarbottom, BorderLayout.SOUTH);
 	}
+	
+	public void appendTemperatureField(String number)
+	{
+		sidebarmiddle.appendTemperatureField(number);
+	}
 }

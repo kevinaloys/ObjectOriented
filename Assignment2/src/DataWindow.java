@@ -9,6 +9,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 /**
@@ -21,7 +23,7 @@ public class DataWindow extends JPanel {
 	private JLabel temperature;
 	private JLabel time;
 	private JTextField temperatureField;
-	private JTextField timeField;
+	private JSlider timeField;
 	private JRadioButton fahrenheit;
 	private JRadioButton celsius;
 	
@@ -40,7 +42,7 @@ public class DataWindow extends JPanel {
 		fahrenheit = new JRadioButton("Fahrenheit");
 		celsius = new JRadioButton("Celsius");
 		temperatureField = new JTextField();
-		timeField = new JTextField();
+		timeField = new JSlider(JSlider.HORIZONTAL, 0, 120, 1);
 		
 		temperature.setHorizontalAlignment(JLabel.CENTER);
 		time.setHorizontalAlignment(JLabel.CENTER);
@@ -59,12 +61,19 @@ public class DataWindow extends JPanel {
 		
 		temperature.setForeground(new Color(185, 188, 209));
 		time.setForeground(new Color(185, 188, 209));
+		timeField.setBackground(Color.RED);
+		timeField.setForeground(new Color(185, 188, 209));
 		fahrenheit.setForeground(new Color(185, 188, 209));
 		celsius.setForeground(new Color(185, 188, 209));
 		
 		ButtonGroup group = new ButtonGroup();
 		group.add(fahrenheit);
 		group.add(celsius);
+		
+		fahrenheit.setSelected(true);
+		fahrenheit.setActionCommand("fahrenheit");
+		celsius.setActionCommand("celsius");
+		
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
@@ -88,14 +97,14 @@ public class DataWindow extends JPanel {
 		gc.weighty = 0;
 		gc.fill = GridBagConstraints.NONE;
 		gc.insets = new Insets(10,0,0,0);
-		add(time, gc);
+		add(fahrenheit, gc);
 		
 		gc.gridx = 0;
 		gc.gridy = 3;
 		gc.weightx = 0;
 		gc.weighty = 0;
-		gc.fill = GridBagConstraints.HORIZONTAL;
-		add(timeField, gc);
+		gc.fill = GridBagConstraints.NONE;
+		add(celsius, gc);
 		
 		
 		gc.gridx = 0;
@@ -103,14 +112,20 @@ public class DataWindow extends JPanel {
 		gc.weightx = 0;
 		gc.weighty = 0;
 		gc.fill = GridBagConstraints.NONE;
-		add(fahrenheit, gc);
+		gc.insets = new Insets(15,0,0,0);
+		add(time, gc);
 		
 		gc.gridx = 0;
 		gc.gridy = 5;
 		gc.weightx = 0;
 		gc.weighty = 0;
 		gc.fill = GridBagConstraints.NONE;
-		add(celsius, gc);
-		
+		add(timeField, gc);
 	}
+	
+	public void appendTemperatureField(String number)
+	{
+		temperatureField.setText(temperatureField.getText() + number);
+	}
+	
 }

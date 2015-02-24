@@ -25,4 +25,10 @@ public class RightBar extends JPanel {
 		add(rightbarbottom, BorderLayout.CENTER);
 		
 	}
+	
+	public void setStringListener(StringListener listener)
+	{
+		rightbarbottom.setStringListener(listener);
+	}
+	
 }

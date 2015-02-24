@@ -14,21 +14,20 @@ import javax.swing.border.LineBorder;
 
 
 public class SideBarBottom extends JPanel {
-	private JButton bake;
-	private JButton broil;
+	private JLabel message;
 	private Border whiteBorder;
 	
 	public SideBarBottom()
 	{
-		bake = new JButton("BAKE");
-		broil = new JButton("BROIL");
+		message = new JLabel("Oven Message");
+		message.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.BOLD, 30));
+		message.setForeground(Color.white);
 /*		whiteBorder = BorderFactory.createLineBorder(Color.WHITE);
 		bake.setBorder(whiteBorder);*/
-		bake.setPreferredSize(new Dimension(100,35));
+/*		bake.setPreferredSize(new Dimension(100,35));
 		broil.setPreferredSize(new Dimension(100, 35));
 		bake.setLocation(200, 15);
-		setLayout(new FlowLayout());
-		add(bake, BorderLayout.CENTER);
-		add(broil, BorderLayout.CENTER);
+		setLayout(new FlowLayout());*/
+		add(message, BorderLayout.CENTER);
 	}
 }

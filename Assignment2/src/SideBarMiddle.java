@@ -12,15 +12,13 @@ import javax.swing.JPanel;
 public class SideBarMiddle extends JPanel {
 	private DataWindow datawindow;
 	private DisplayWindow displaywindow;
-	
+	 
 	public SideBarMiddle()
-	{	
+	{	 
 		datawindow = new DataWindow();
 		displaywindow = new DisplayWindow();
 		
 		setLayout(new BorderLayout());
-		
-		
 		
 		displaywindow.setPreferredSize(new Dimension(250, 350));
 		displaywindow.setBackground(new Color(55, 54, 86));
@@ -31,5 +29,11 @@ public class SideBarMiddle extends JPanel {
 		add(datawindow, BorderLayout.NORTH);
 		add(displaywindow, BorderLayout.SOUTH);
 		
+		
+	}
+	
+	public void appendTemperatureField(String number)
+	{
+		datawindow.appendTemperatureField(number);
 	}
 }
