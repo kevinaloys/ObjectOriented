@@ -36,6 +36,7 @@ public class DisplayWindow extends JPanel {
 		GridBagConstraints gc = new GridBagConstraints();
 		GridBagConstraints f = new GridBagConstraints();
 		
+		
 		gc.gridx = 0;
 		gc.gridy = 0;
 		gc.weightx = 0;

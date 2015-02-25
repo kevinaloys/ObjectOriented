@@ -6,18 +6,14 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
-
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 /**
@@ -81,7 +77,8 @@ public class DataWindow extends JPanel {
 		group.add(fahrenheit);
 		group.add(celsius);
 		
-		fahrenheit.setSelected(true);
+		fahrenheit.setSelected(false);
+		celsius.setSelected(false);
 		fahrenheit.setActionCommand("fahrenheit");
 		celsius.setActionCommand("celsius");
 		
