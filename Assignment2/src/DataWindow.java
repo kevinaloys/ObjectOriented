@@ -85,19 +85,43 @@ public class DataWindow extends JPanel {
 		fahrenheit.setActionCommand("fahrenheit");
 		celsius.setActionCommand("celsius");
 		
+		
 		timeField.addChangeListener(new ChangeListener() {
 		      public void stateChanged(ChangeEvent event) {
 		        int timeValue = timeField.getValue();
 		        if(dataListener != null)
 				{
 					dataListener.time(timeValue);
-					dataListener.temperatureIn(group.getSelection().getActionCommand());
+					/*dataListener.temperatureIn(group.getSelection().getActionCommand());*/
 					
 				}
 		      }
 		    });
 		
+		fahrenheit.addActionListener(new ActionListener() {
 
+			public void actionPerformed(ActionEvent e) {
+				JRadioButton clicked = (JRadioButton)e.getSource();
+				if(clicked == fahrenheit)
+				{
+					dataListener.temperatureIn(clicked.getActionCommand());
+				}
+				
+			}
+			
+		});
+		
+		celsius.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JRadioButton clicked = (JRadioButton)e.getSource();
+				if(clicked == celsius)
+				{
+					dataListener.temperatureIn(clicked.getActionCommand());
+				}
+				
+			}
+			
+		});
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
