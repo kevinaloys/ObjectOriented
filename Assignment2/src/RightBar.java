@@ -31,4 +31,9 @@ public class RightBar extends JPanel {
 		rightbarbottom.setStringListener(listener);
 	}
 	
+	public void setDataListener(DataListener listener)
+	{
+		rightbarbottom.setDataListener(listener);
+	}
+	
 }

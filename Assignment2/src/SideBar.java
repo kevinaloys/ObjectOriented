@@ -48,4 +48,9 @@ public class SideBar extends JPanel {
 		sidebarmiddle.setDataListener(listener);
 		sidebarbottom.setDataListener(listener);
 	}
+	
+	public String getCurrentTemperature()
+	{
+		return sidebarmiddle.getCurrentTemperature();
+	}
 }

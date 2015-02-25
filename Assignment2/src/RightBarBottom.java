@@ -13,6 +13,7 @@ public class RightBarBottom extends JPanel implements ActionListener {
 	private JButton one, two, three, four, five, six, seven, eight, nine, zero, place, start;
     
 	private StringListener textListener;
+	private DataListener dataListener;
 	
 	public RightBarBottom()
 	{
@@ -152,12 +153,16 @@ public class RightBarBottom extends JPanel implements ActionListener {
 		gc.fill = GridBagConstraints.NONE;
 		add(start, gc);
 
-		
 	}
 	
 	public void setStringListener(StringListener listener)
 	{
 		this.textListener = listener;
+	}
+	
+	public void setDataListener(DataListener listener)
+	{
+		this.dataListener = listener;
 	}
 	
 	public void actionPerformed(ActionEvent e) {

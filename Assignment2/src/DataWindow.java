@@ -26,7 +26,7 @@ import javax.swing.event.ChangeEvent;
  *
  */
 
-public class DataWindow extends JPanel implements ActionListener {
+public class DataWindow extends JPanel {
 	private JLabel temperature;
 	private JLabel time;
 	private JTextField temperatureField;
@@ -77,7 +77,7 @@ public class DataWindow extends JPanel implements ActionListener {
 		fahrenheit.setForeground(new Color(185, 188, 209)); 
 		celsius.setForeground(new Color(185, 188, 209));
 		
-		ButtonGroup group = new ButtonGroup();
+		final ButtonGroup group = new ButtonGroup();
 		group.add(fahrenheit);
 		group.add(celsius);
 		
@@ -91,9 +91,13 @@ public class DataWindow extends JPanel implements ActionListener {
 		        if(dataListener != null)
 				{
 					dataListener.time(timeValue);
+					dataListener.temperatureIn(group.getSelection().getActionCommand());
+					
 				}
 		      }
 		    });
+		
+
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
@@ -154,18 +158,9 @@ public class DataWindow extends JPanel implements ActionListener {
 	{
 		temperatureField.setText(temperatureField.getText() + number);
 	}
-
 	
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == fahrenheit)
-		{
-			if (dataListener != null)
-			{
-				dataListener.temperatureIn("fahrenheit");
-			}
-		}
-		
+	public String getCurrentTemperature()
+	{
+		return temperatureField.getText();
 	}
-	
-	
 }

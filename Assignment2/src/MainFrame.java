@@ -13,7 +13,14 @@ public class MainFrame extends JFrame{
 
 	private SideBar sidebar;
 	private RightBar rightbar;
-		
+	
+	private int timeInMinutes;
+	private String tempUnits;
+	private String temp;
+	private boolean placed;
+	private boolean start;
+	
+	
 	public MainFrame()
 	{
 		super("Alpha2Oven");
@@ -57,7 +64,12 @@ public class MainFrame extends JFrame{
 			
 			public void start(String text)
 			{
-				System.out.println(text);
+				if(text == "start")
+				{
+					System.out.println(getTime());
+					System.out.println(getTempUnits());
+					System.out.println(getCurrentTemperature());
+				}
 			}
 		});
 		
@@ -66,14 +78,16 @@ public class MainFrame extends JFrame{
 		{
 			public void time(int time)
 			{
-				System.out.println(time);
+				timeInMinutes = time;
 			}
 			
 			public void temperatureIn(String tempUnit)
 			{
-				System.out.println(tempUnit);
+				tempUnits = tempUnit;
 			}
+			
 		});		
+		
 		
 	}
 	
@@ -85,5 +99,20 @@ public class MainFrame extends JFrame{
 	public void appendTemperatureField(String number)
 	{
 		sidebar.appendTemperatureField(number);
+	}
+	
+	public String getCurrentTemperature()
+	{
+		return sidebar.getCurrentTemperature();
+	}
+	
+	public int getTime()
+	{
+		return timeInMinutes;
+	}
+	
+	public String getTempUnits()
+	{
+		return tempUnits;
 	}
 }
