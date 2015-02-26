@@ -13,6 +13,7 @@ public class SideBar extends JPanel {
 	
 	private SideBarTop sidebartop;
 	private SideBarMiddle sidebarmiddle;
+	private MainFrame mainframe;
 	
 	public SideBar()
 	{
@@ -38,7 +39,6 @@ public class SideBar extends JPanel {
 	
 	public void setDataListener(DataListener listener)
 	{
-		sidebartop.setDataListener(listener);
 		sidebarmiddle.setDataListener(listener);
 	}
 	

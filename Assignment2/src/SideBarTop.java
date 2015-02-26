@@ -3,6 +3,9 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -11,7 +14,7 @@ public class SideBarTop extends JPanel {
 	private JLabel status;
 	private JLabel power;
 	
-	private DataListener datalistener;
+
 	public SideBarTop()
 	{
 		
@@ -36,10 +39,7 @@ public class SideBarTop extends JPanel {
 		gc.weighty = 0;
 		gc.fill = GridBagConstraints.NONE;
 		add(power, gc);
+		
 	}
-	
-	public void setDataListener(DataListener listener)
-	{
-		this.datalistener = listener;
-	}
+
 }

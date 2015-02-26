@@ -49,7 +49,7 @@ public class DataWindow extends JPanel {
 		fahrenheit = new JRadioButton("Fahrenheit");
 		celsius = new JRadioButton("Celsius");
 		temperatureField = new JTextField();
-		timeField = new JSlider(JSlider.HORIZONTAL, 0, 60, 1);
+		timeField = new JSlider(JSlider.HORIZONTAL, 0, 60, 0);
 		
 		temperature.setHorizontalAlignment(JLabel.CENTER);
 		time.setHorizontalAlignment(JLabel.CENTER);
@@ -166,7 +166,6 @@ public class DataWindow extends JPanel {
 		gc.weighty = 0;
 		gc.fill = GridBagConstraints.NONE;
 		add(timeField, gc);
-		
 		
 	}
 	

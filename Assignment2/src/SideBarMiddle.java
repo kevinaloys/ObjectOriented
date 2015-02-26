@@ -12,9 +12,8 @@ import javax.swing.JPanel;
 public class SideBarMiddle extends JPanel {
 	private DataWindow datawindow;
 	private DisplayWindow displaywindow;
-	
 	private DataListener datalistener;
-	
+	private SideBar sidebar;
 	public SideBarMiddle()
 	{	 
 		datawindow = new DataWindow();

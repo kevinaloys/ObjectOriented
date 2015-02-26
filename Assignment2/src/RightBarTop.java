@@ -48,4 +48,6 @@ public class RightBarTop extends JPanel {
 		add(timeRemaining, gc);
 		
 	}
+	
+	
 }

@@ -111,6 +111,29 @@ public class Alpha2Oven extends Alpha1Oven
 		this.itemPlaced = placement;
 	}
 	
+	public boolean getPlaced()
+	{
+		return itemPlaced;
+	}
+	
+	public int getTemeprature()
+	{
+		return cookingTemp;
+	}
+	
+	public long getTime()
+	{
+		return cookingTimeInMinutes;
+	}
+	public int getTemperatureInF()
+	{
+		return thermostat.getTemperatureInF();
+	}
+	
+	public int getTemperatureInC()
+	{
+		return thermostat.getTemperatureInC();
+	}
 	/**
 	 * The displayTempTimeError is responsible for producing
 	 * the appropriate Error Message depending on the status
@@ -121,12 +144,12 @@ public class Alpha2Oven extends Alpha1Oven
 	 * @param placed A boolean data type specifying whether an
 	 * 				 item is placed or not.
 	 */
-	private String displayTempTimeError(int temp, long time, boolean placed)
+	public String displayTempTimeError(int temp, long time, boolean placed)
 	{
-		String error = null;
+		String error = "No Error";
 		if(temp == 0)
 		{
-			if(time == 0)
+			if(time <= 0)
 			{
 				if(placed == false)
 				{
