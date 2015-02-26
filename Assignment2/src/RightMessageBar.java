@@ -23,6 +23,7 @@ public class RightMessageBar extends JPanel {
 		bake.setLocation(200, 15);
 		setLayout(new FlowLayout());*/
 		add(message, BorderLayout.CENTER);
+		
 	}
 	
 	public void setDataListener(DataListener listener)

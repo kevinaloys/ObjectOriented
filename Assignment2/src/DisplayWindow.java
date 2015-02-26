@@ -16,24 +16,28 @@ import javax.swing.JRadioButton;
  *
  */
 public class DisplayWindow extends JPanel {
-	JLabel fahrenheit;
-	JLabel celsius;
-	JLabel displayFahrenheit;
-	JLabel displayCelsius;
-	JRadioButton optionFahrenheit;
-	JRadioButton optionCelsius;
+	private JLabel fahrenheit;
+	private JLabel celsius;
+	private JLabel displayFahrenheit;
+	private JLabel displayCelsius;
+	private JRadioButton optionFahrenheit;
+	private JRadioButton optionCelsius;
+	private JLabel dispF;
+	
+	String messageF;
+	
+	private SideBarMiddle sidebarmiddle;
 	public DisplayWindow()
 	{
 		fahrenheit = new JLabel("Fahrenheit");
 		celsius = new JLabel("Celsius");
 		
-		displayFahrenheit = new JLabel("300 \u00b0F");
-		displayCelsius = new JLabel("148.88 \u00b0C");
+		displayFahrenheit = new JLabel(" \u00b0F");
+		displayCelsius = new JLabel(" \u00b0C");
 		
 		
 		optionFahrenheit = new JRadioButton("Fahreneheit");
 		optionCelsius = new JRadioButton("Celsuis");
-		
 		
 		fahrenheit.setForeground(new Color(185,188,209));
 		celsius.setForeground(new Color(185,188,209));
@@ -100,23 +104,24 @@ public class DisplayWindow extends JPanel {
 		f.fill = GridBagConstraints.NONE;
 		add(optionCelsius, f);
 		
-		
 		optionFahrenheit.addActionListener(new ActionListener()
 		{
+			
 			public void actionPerformed(ActionEvent e) {
 				JRadioButton clicked = (JRadioButton)e.getSource();
 				{
 					if(clicked.isSelected())
 					{
 						displayFahrenheit.setVisible(true);
+						
 					}
 					else if(!clicked.isSelected())
 					{
 						displayFahrenheit.setVisible(false);
 					}
+					
 				}
 			}
-			
 		});
 		
 		optionCelsius.addActionListener(new ActionListener()
@@ -127,15 +132,20 @@ public class DisplayWindow extends JPanel {
 					if(clicked.isSelected())
 					{
 						displayCelsius.setVisible(true);
+						displayCelsius.getText();
 					}
 					else if(!clicked.isSelected())
 					{
 						displayCelsius.setVisible(false);
 					}
+					
+					
 				}
 				
 			}
 			
 		});
+		
+		
 	}
 }

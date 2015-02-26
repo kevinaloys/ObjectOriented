@@ -13,7 +13,6 @@ public class MainFrame extends JFrame{
 
 	private SideBar sidebar;
 	private RightBar rightbar;
-	
 	private int timeInMinutes;
 	private String tempUnits;
 	private String temperature;
@@ -26,7 +25,6 @@ public class MainFrame extends JFrame{
 	{
 		super("Alpha2Oven");
 		try { 
-/*			UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");*/
 		    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
 		    e.printStackTrace();
@@ -48,7 +46,6 @@ public class MainFrame extends JFrame{
 		
 		app = new App();
 		
-		
 		//Listener for Keypad events
 		rightbar.setStringListener(new StringListener()
 		{
@@ -57,6 +54,7 @@ public class MainFrame extends JFrame{
 			//
 			public void textEmitted(String text) {
 				appendTemperatureField(text);
+				
 			}
 			
 			public void placed(String text)
@@ -71,16 +69,19 @@ public class MainFrame extends JFrame{
 			{
 				if(text == "start")
 				{
-					app.setPlaced(getPlaced());
-					app.setTempUnits(tempUnits);
-					app.setTemperature(getCurrentTemperature());
-					app.setTime(timeInMinutes);
-					app.start();
+					start = true;
 					
 				}
+				app.setPlaced(getPlaced());
+				app.setTempUnits(tempUnits);
+				app.setTemperature(getTemperature());
+				app.setTime(timeInMinutes);
+				app.start();
+				System.out.println(app.getErrorMessage(getCurrentTemperatureInInteger(), getTime(), getPlaced()));
+				System.out.println(app.getStatus());
 			}
 		});
-		
+
 		
 		sidebar.setDataListener(new DataListener()
 		{
@@ -94,13 +95,8 @@ public class MainFrame extends JFrame{
 				tempUnits = tempUnit;
 			}
 			
-		});		
-		
-		
+		});	
 	}
-	
-	
-	
 	
 	//Responsible for appending the Temperature in JTextField of
 	//temperature field in DataWindow
@@ -129,7 +125,20 @@ public class MainFrame extends JFrame{
 		temperature = getCurrentTemperature();
 		return temperature;
 	}
-	
+	public int getCurrentTemperatureInInteger()
+	{
+		int temp;
+		try
+		{
+			 temp = Integer.parseInt(getCurrentTemperature());
+		}
+		catch(NumberFormatException e)
+		{
+			 temp = 0;
+		}
+		return temp;
+		
+	}
 	public boolean getPlaced()
 	{
 		return placed;
@@ -140,4 +149,9 @@ public class MainFrame extends JFrame{
 		ovenstatus = app.getStatus();
 	}
 	
+	public String getTemperatureInF()
+	{
+		String f = Integer.toString(app.getTemperatureInF());
+		return f;
+	}
 }
