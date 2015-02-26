@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 
 public class RightBarBottom extends JPanel implements ActionListener {
-	private JButton one, two, three, four, five, six, seven, eight, nine, zero, place, start;
+	private JButton one, two, three, four, five, six, seven, eight, nine, zero, place, start, point;
     
 	private StringListener textListener;
 	private DataListener dataListener;
@@ -152,7 +152,7 @@ public class RightBarBottom extends JPanel implements ActionListener {
 		gc.weighty = 0;
 		gc.fill = GridBagConstraints.NONE;
 		add(start, gc);
-
+		
 	}
 	
 	public void setStringListener(StringListener listener)

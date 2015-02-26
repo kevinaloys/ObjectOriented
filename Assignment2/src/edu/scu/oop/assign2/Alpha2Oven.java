@@ -69,7 +69,6 @@ public class Alpha2Oven extends Alpha1Oven
 		}
 		else
 		{
-			displayTempTimeError(cookingTemp, cookingTimeInMinutes, itemPlaced);
 			status = StatusType.off;
 		}
 	}
@@ -102,6 +101,16 @@ public class Alpha2Oven extends Alpha1Oven
 		System.out.println("Item Placed	         : " + itemPlaced);
 	}
 	
+	public StatusType getStatus()
+	{
+		return status;
+	}
+	
+	public void setPlaced(boolean placement)
+	{
+		this.itemPlaced = placement;
+	}
+	
 	/**
 	 * The displayTempTimeError is responsible for producing
 	 * the appropriate Error Message depending on the status
@@ -112,30 +121,35 @@ public class Alpha2Oven extends Alpha1Oven
 	 * @param placed A boolean data type specifying whether an
 	 * 				 item is placed or not.
 	 */
-	private void displayTempTimeError(int temp, long time, boolean placed)
+	private String displayTempTimeError(int temp, long time, boolean placed)
 	{
+		String error = null;
 		if(temp == 0)
 		{
 			if(time == 0)
 			{
 				if(placed == false)
 				{
-					System.out.println("Temperature and Time not set. Food is not placed!");
+					error = "Temperature and Time not set. Food is not placed!";
+					
 				}
 				else
 				{
-					System.out.println("Temperature and Time are not set!");
+					error = "Temperature and Time are not set!";
+					
 				}
 			}
 			else
 			{
 				if(placed == false)
 				{
-					System.out.println("Temperature is not set. Food is not placed!");
+					error = "Temperature is not set. Food is not placed!";
+					
 				}
 				else
 				{
-					System.out.println("Temperature is not set!");
+					error = "Temperature is not set!";
+					
 				}
 			}
 		}
@@ -145,20 +159,23 @@ public class Alpha2Oven extends Alpha1Oven
 			{
 				if(placed == false)
 				{
-					System.out.println("Time is not set. Food is not placed!");
+					error = "Time is not set. Food is not placed!";
+					
 				}
 				else
 				{
-					System.out.println("Time is not set!");
+					error = "Time is not set!";
+					
 				}
 			}
 			else
 			{
 				if(placed == false)
 				{
-					System.out.println("Food is not placed!");
+					error = "Food is not placed!";
 				}
 			}
 		}
+		return error;
 	}
 }

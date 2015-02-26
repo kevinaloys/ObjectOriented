@@ -16,10 +16,11 @@ public class MainFrame extends JFrame{
 	
 	private int timeInMinutes;
 	private String tempUnits;
-	private String temp;
+	private String temperature;
 	private boolean placed;
 	private boolean start;
-	
+	private String ovenstatus;
+	private App app;
 	
 	public MainFrame()
 	{
@@ -45,6 +46,7 @@ public class MainFrame extends JFrame{
 		setVisible(true);
 		setSize(950, 900);
 		
+		app = new App();
 		
 		
 		//Listener for Keypad events
@@ -59,16 +61,22 @@ public class MainFrame extends JFrame{
 			
 			public void placed(String text)
 			{
-				System.out.println(text);
+				if(text == "placed")
+				{
+					placed = true;
+				}
 			}
 			
 			public void start(String text)
 			{
 				if(text == "start")
 				{
-					System.out.println(getTime());
-					System.out.println(getTempUnits());
-					System.out.println(getCurrentTemperature());
+					app.setPlaced(getPlaced());
+					app.setTempUnits(tempUnits);
+					app.setTemperature(getCurrentTemperature());
+					app.setTime(timeInMinutes);
+					app.start();
+					
 				}
 			}
 		});
@@ -101,7 +109,7 @@ public class MainFrame extends JFrame{
 		sidebar.appendTemperatureField(number);
 	}
 	
-	public String getCurrentTemperature()
+	private String getCurrentTemperature()
 	{
 		return sidebar.getCurrentTemperature();
 	}
@@ -115,4 +123,21 @@ public class MainFrame extends JFrame{
 	{
 		return tempUnits;
 	}
+	
+	public String getTemperature()
+	{
+		temperature = getCurrentTemperature();
+		return temperature;
+	}
+	
+	public boolean getPlaced()
+	{
+		return placed;
+	}
+	
+	public void setOvenStatus()
+	{
+		ovenstatus = app.getStatus();
+	}
+	
 }
