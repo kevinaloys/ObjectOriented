@@ -35,4 +35,9 @@ public class RightBar extends JPanel {
 	{
 		rightbartop.startCounter(time, ovenstatus);
 	}
+	
+	public void putError(String error)
+	{
+		rightbartop.putError(error);
+	}
 }

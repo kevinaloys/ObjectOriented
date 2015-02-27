@@ -22,7 +22,8 @@ public class DisplayWindow extends JPanel {
 	private JLabel displayCelsius;
 	private JRadioButton optionFahrenheit;
 	private JRadioButton optionCelsius;
-	
+	int fah;
+	int cel;
 	public DisplayWindow()
 	{
 		fahrenheit = new JLabel("Fahrenheit");
@@ -108,7 +109,7 @@ public class DisplayWindow extends JPanel {
 					if(clicked.isSelected())
 					{
 						displayFahrenheit.setVisible(true);
-						displayFahrenheit.setText(appendFahrenheit("Kev") +  " \u00b0F");
+						displayFahrenheit.setText(fah +  " \u00b0F");
 						
 					}
 					else if(!clicked.isSelected())
@@ -128,7 +129,7 @@ public class DisplayWindow extends JPanel {
 					if(clicked.isSelected())
 					{
 						displayCelsius.setVisible(true);
-						displayCelsius.setText("");
+						displayCelsius.setText(cel + " \u00b0C");
 					}
 					else if(!clicked.isSelected())
 					{
@@ -144,8 +145,13 @@ public class DisplayWindow extends JPanel {
 		
 	}
 	
-	public String appendFahrenheit(String fah)
+	public void appendFahrenheit(int fah)
 	{
-		return fah;
+		this.fah = fah;
+	}
+	
+	public void appendCelsius(int cel)
+	{
+		this.cel = cel;
 	}
 }

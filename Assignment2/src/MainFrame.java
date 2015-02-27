@@ -19,7 +19,10 @@ public class MainFrame extends JFrame{
 	private boolean placed;
 	private boolean start;
 	private String ovenstatus;
+	private String error;
 	private App app;
+	private String fah;
+	private String cel;
 	
 	private MessageListener messageListener;
 	
@@ -72,6 +75,8 @@ public class MainFrame extends JFrame{
 				if(text == "start")
 				{
 					start = true;
+				    
+					putError(app.getErrorMessage(getCurrentTemperatureInInteger(), getTime(), getPlaced()));
 					
 				}
 				app.setPlaced(getPlaced());
@@ -79,12 +84,18 @@ public class MainFrame extends JFrame{
 				app.setTemperature(getTemperature());
 				app.setTime(timeInMinutes);
 				app.start();
+				appendFahrenheit(app.getTemperatureInF());
+				appendCelsius(app.getTemperatureInC());
+				/*putError(app.getErrorMessage(getCurrentTemperatureInInteger(), getTime(), getPlaced()));*/
 				if(app.getStatus().equalsIgnoreCase("On"))
 				{
 					startCounter(getTime(), app.getStatus());
 				}
 				System.out.println(app.getErrorMessage(getCurrentTemperatureInInteger(), getTime(), getPlaced()));
 				System.out.println(app.getStatus());
+				System.out.println(app.getTemperatureInC());
+				System.out.println(app.getTemperatureInF());
+				
 				
 			}
 		});
@@ -108,13 +119,31 @@ public class MainFrame extends JFrame{
 	}
 	
 	
+	//Append Fahrenheit
+	
+	public void appendFahrenheit(int fah)
+	{
+		sidebar.appendFahrenheit(fah);
+	}
+	
+	public void appendCelsius(int cel)
+	{
+		sidebar.appendCelsius(cel);
+	}
+	
 	//Method to start counter
 	public void startCounter(int time, String ovenstatus)
 	{
 		rightbar.startCounter(time, ovenstatus);
 	}
 	
+	//Method to send the error
 	
+	public void putError(String error)
+	{
+		rightbar.putError(error);
+	}
+
 	//Responsible for appending the Temperature in JTextField of
 	//temperature field in DataWindow
 	public void appendTemperatureField(String number)
@@ -171,11 +200,25 @@ public class MainFrame extends JFrame{
 		ovenstatus = app.getStatus();
 	}
 	
+	public void setError()
+	{
+		error = app.getErrorMessage(getCurrentTemperatureInInteger(), getTime(), getPlaced());
+	}
+	
 	public String getTemperatureInF()
 	{
 		String f = Integer.toString(app.getTemperatureInF());
 		return f;
 	}
 	
+	public void getTempInF()
+	{
+		fah = Integer.toString(app.getTemperatureInF());
+	}
+	
+	public void getTempInC()
+	{
+		cel = Integer.toString(app.getTemperatureInC());
+	}
 	
 }

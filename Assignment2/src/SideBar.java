@@ -36,4 +36,14 @@ public class SideBar extends JPanel {
 	{
 		return sidebarmiddle.getCurrentTemperature();
 	}
+	
+	public void appendFahrenheit(int fah)
+	{
+		sidebarmiddle.appendFahrenheit(fah);
+	}
+	
+	public void appendCelsius(int cel)
+	{
+		sidebarmiddle.appendCelsius(cel);
+	}
 }

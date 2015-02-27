@@ -6,14 +6,16 @@ class RightBarTop extends JPanel{
    
    private JLabel displayBtn;
    private JLabel displayField;
+   private JLabel ovenErrorMessage;
    private Timer timer;
    Integer count = 0;
- 
+   String errorMessage;
    public RightBarTop(){
       
         
 	  // create a textfield
 	  displayField = new JLabel();	 
+	  ovenErrorMessage = new JLabel();
       // create buttons
       displayBtn = new JLabel("Oven Status " + "Off");
       displayField.setFont(Utils.createFont("/fonts/Ubuntu-B.ttf").deriveFont(Font.BOLD, 150));
@@ -43,10 +45,10 @@ class RightBarTop extends JPanel{
 	      ActionListener taskPerformer = new ActionListener (){
 	    	  public void actionPerformed(ActionEvent e)
 	    	  {
-	    		if (count.intValue() >= time)
-	    		{
-	    	      timer.stop();	    		  
-	    		}
+	    		  if (count.intValue() >= time)
+	    		  {
+	    	        timer.stop();	    		  
+	    		  }
 	    		  displayField.setText(count.toString());   		 
 	    		  count = count + 1;
 	    		  if(count.intValue() == (time-1 + 2))
@@ -55,8 +57,7 @@ class RightBarTop extends JPanel{
 	    		  }
 	    		  else
 	    		  {
-	    			  displayBtn.setText("Oven Status " + ovenstatus);
-	    			  
+	    			  displayBtn.setText("Oven Status " + ovenstatus);	    			  
 	    		  }
 	    		     		  
 	    	  }
@@ -66,6 +67,11 @@ class RightBarTop extends JPanel{
 	      // add the task to the timer
 	      timer = new Timer(1000,taskPerformer);
 	      timer.start();
+   }
+   
+   public void putError(String error)
+   {
+		errorMessage = error;
    }
 }
 
