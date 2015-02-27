@@ -146,7 +146,7 @@ public class Alpha2Oven extends Alpha1Oven
 	 */
 	public String displayTempTimeError(int temp, long time, boolean placed)
 	{
-		String error = "No Error";
+		String error = "";
 		if(temp == 0)
 		{
 			if(time <= 0)
