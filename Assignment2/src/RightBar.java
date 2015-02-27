@@ -8,25 +8,21 @@ import javax.swing.JPanel;
 public class RightBar extends JPanel {
 	private RightBarTop rightbartop;
 	private RightBarBottom rightbarbottom;
-	private RightMessageBar rightmessagebar;
 	
 	public RightBar()
 	{
 		rightbartop = new RightBarTop();
 		rightbarbottom = new RightBarBottom();
-		rightmessagebar = new RightMessageBar();
 		
 		setLayout(new BorderLayout());
 		
 		rightbartop.setBackground(new Color(255,255, 255));
-		rightbartop.setPreferredSize(new Dimension(650, 250));
+		rightbartop.setPreferredSize(new Dimension(650, 260));
 		
 		rightbarbottom.setBackground(new Color(255, 255, 255));
-		rightmessagebar.setPreferredSize(new Dimension(250, 70));
-		rightmessagebar.setBackground(new Color(201, 66, 52));
+
 		add(rightbartop, BorderLayout.NORTH);
 		add(rightbarbottom, BorderLayout.CENTER);
-		add(rightmessagebar, BorderLayout.SOUTH);
 		
 	}
 	
@@ -35,9 +31,8 @@ public class RightBar extends JPanel {
 		rightbarbottom.setStringListener(listener);
 	}
 	
-	public void setDataListener(DataListener listener)
+	public void startCounter(int time, String ovenstatus)
 	{
-		rightbarbottom.setDataListener(listener);
+		rightbartop.startCounter(time, ovenstatus);
 	}
-	
 }

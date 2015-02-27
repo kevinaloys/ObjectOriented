@@ -22,17 +22,13 @@ public class DisplayWindow extends JPanel {
 	private JLabel displayCelsius;
 	private JRadioButton optionFahrenheit;
 	private JRadioButton optionCelsius;
-	private JLabel dispF;
 	
-	String messageF;
-	
-	private SideBarMiddle sidebarmiddle;
 	public DisplayWindow()
 	{
 		fahrenheit = new JLabel("Fahrenheit");
 		celsius = new JLabel("Celsius");
 		
-		displayFahrenheit = new JLabel(" \u00b0F");
+		displayFahrenheit = new JLabel("");
 		displayCelsius = new JLabel(" \u00b0C");
 		
 		
@@ -57,7 +53,6 @@ public class DisplayWindow extends JPanel {
 		
 		GridBagConstraints gc = new GridBagConstraints();
 		GridBagConstraints f = new GridBagConstraints();
-		GridBagConstraints o = new GridBagConstraints();
 		
 		gc.gridx = 0;
 		gc.gridy = 0;
@@ -113,6 +108,7 @@ public class DisplayWindow extends JPanel {
 					if(clicked.isSelected())
 					{
 						displayFahrenheit.setVisible(true);
+						displayFahrenheit.setText(appendFahrenheit("Kev") +  " \u00b0F");
 						
 					}
 					else if(!clicked.isSelected())
@@ -132,7 +128,7 @@ public class DisplayWindow extends JPanel {
 					if(clicked.isSelected())
 					{
 						displayCelsius.setVisible(true);
-						displayCelsius.getText();
+						displayCelsius.setText("");
 					}
 					else if(!clicked.isSelected())
 					{
@@ -146,6 +142,10 @@ public class DisplayWindow extends JPanel {
 			
 		});
 		
-		
+	}
+	
+	public String appendFahrenheit(String fah)
+	{
+		return fah;
 	}
 }

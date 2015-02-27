@@ -11,24 +11,14 @@ import javax.swing.JPanel;
 
 public class SideBar extends JPanel {
 	
-	private SideBarTop sidebartop;
 	private SideBarMiddle sidebarmiddle;
-	private MainFrame mainframe;
 	
 	public SideBar()
 	{
 		//Initialize components
-		sidebartop = new SideBarTop();
 		sidebarmiddle = new SideBarMiddle();
-		
 		setLayout(new BorderLayout());
-		
 		//Add Size and Background
-		sidebartop.setPreferredSize(new Dimension(250, 90));
-		sidebartop.setBackground(new Color(219, 221, 222));
-				
-		//Add components
-		add(sidebartop, BorderLayout.NORTH);
 		add(sidebarmiddle, BorderLayout.CENTER);
 	}
 	
