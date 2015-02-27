@@ -1,7 +1,10 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.UIManager;
 
 /**
@@ -23,6 +26,7 @@ public class MainFrame extends JFrame{
 	private App app;
 	private String fah;
 	private String cel;
+	private JLabel demo;
 	
 	private MessageListener messageListener;
 	
@@ -40,8 +44,11 @@ public class MainFrame extends JFrame{
 		sidebar = new SideBar();
 		rightbar = new RightBar();
 		sidebar.setPreferredSize(new Dimension(300, 700));
-		rightbar.setBackground(Color.red);
 		
+		rightbar.setBackground(Color.red);
+		demo = new JLabel();
+		demo.setFont(Utils.createFont("/fonts/Ubuntu-L.ttf").deriveFont(Font.PLAIN, 40));
+		demo.setBackground(Color.black);
 		//Adding Components
 		add(sidebar, BorderLayout.WEST);
 		add(rightbar, BorderLayout.CENTER);
@@ -75,9 +82,9 @@ public class MainFrame extends JFrame{
 				if(text == "start")
 				{
 					start = true;
-				    
-					putError(app.getErrorMessage(getCurrentTemperatureInInteger(), getTime(), getPlaced()));
-					
+				    demo.setText(app.getErrorMessage(getCurrentTemperatureInInteger(), getTime(), getPlaced()));
+					add(demo, BorderLayout.SOUTH);
+					revalidate();
 				}
 				app.setPlaced(getPlaced());
 				app.setTempUnits(tempUnits);
@@ -90,12 +97,7 @@ public class MainFrame extends JFrame{
 				if(app.getStatus().equalsIgnoreCase("On"))
 				{
 					startCounter(getTime(), app.getStatus());
-				}
-				System.out.println(app.getErrorMessage(getCurrentTemperatureInInteger(), getTime(), getPlaced()));
-				System.out.println(app.getStatus());
-				System.out.println(app.getTemperatureInC());
-				System.out.println(app.getTemperatureInF());
-				
+				}	
 				
 			}
 		});
@@ -209,16 +211,6 @@ public class MainFrame extends JFrame{
 	{
 		String f = Integer.toString(app.getTemperatureInF());
 		return f;
-	}
-	
-	public void getTempInF()
-	{
-		fah = Integer.toString(app.getTemperatureInF());
-	}
-	
-	public void getTempInC()
-	{
-		cel = Integer.toString(app.getTemperatureInC());
 	}
 	
 }

@@ -36,6 +36,7 @@ public class DisplayWindow extends JPanel {
 		optionFahrenheit = new JRadioButton("Fahreneheit");
 		optionCelsius = new JRadioButton("Celsuis");
 		
+		
 		fahrenheit.setForeground(new Color(185,188,209));
 		celsius.setForeground(new Color(185,188,209));
 		displayFahrenheit.setForeground(new Color(185,188,209));

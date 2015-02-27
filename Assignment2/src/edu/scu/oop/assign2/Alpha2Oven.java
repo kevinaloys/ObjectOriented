@@ -146,7 +146,7 @@ public class Alpha2Oven extends Alpha1Oven
 	 */
 	public String displayTempTimeError(int temp, long time, boolean placed)
 	{
-		String error = "No Error";
+		String error = "Note: Cooking time cannot be below 72 \u00b0F";
 		if(temp == 0)
 		{
 			if(time <= 0)
