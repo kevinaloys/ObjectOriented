@@ -79,6 +79,10 @@ public class MainFrame extends JFrame{
 				app.setTemperature(getTemperature());
 				app.setTime(timeInMinutes);
 				app.start();
+				if(app.getStatus().equalsIgnoreCase("On"))
+				{
+					startCounter(getTime(), app.getStatus());
+				}
 				System.out.println(app.getErrorMessage(getCurrentTemperatureInInteger(), getTime(), getPlaced()));
 				System.out.println(app.getStatus());
 				
@@ -98,8 +102,18 @@ public class MainFrame extends JFrame{
 				tempUnits = tempUnit;
 			} 
 			
-		});	
+		});
+		
+		
 	}
+	
+	
+	//Method to start counter
+	public void startCounter(int time, String ovenstatus)
+	{
+		rightbar.startCounter(time, ovenstatus);
+	}
+	
 	
 	//Responsible for appending the Temperature in JTextField of
 	//temperature field in DataWindow

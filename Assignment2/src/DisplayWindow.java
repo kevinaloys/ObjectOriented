@@ -28,7 +28,7 @@ public class DisplayWindow extends JPanel {
 		fahrenheit = new JLabel("Fahrenheit");
 		celsius = new JLabel("Celsius");
 		
-		displayFahrenheit = new JLabel(" \u00b0F");
+		displayFahrenheit = new JLabel("");
 		displayCelsius = new JLabel(" \u00b0C");
 		
 		
@@ -108,6 +108,7 @@ public class DisplayWindow extends JPanel {
 					if(clicked.isSelected())
 					{
 						displayFahrenheit.setVisible(true);
+						displayFahrenheit.setText(appendFahrenheit("Kev") +  " \u00b0F");
 						
 					}
 					else if(!clicked.isSelected())
@@ -127,7 +128,7 @@ public class DisplayWindow extends JPanel {
 					if(clicked.isSelected())
 					{
 						displayCelsius.setVisible(true);
-						displayCelsius.getText();
+						displayCelsius.setText("");
 					}
 					else if(!clicked.isSelected())
 					{
@@ -141,5 +142,10 @@ public class DisplayWindow extends JPanel {
 			
 		});
 		
+	}
+	
+	public String appendFahrenheit(String fah)
+	{
+		return fah;
 	}
 }

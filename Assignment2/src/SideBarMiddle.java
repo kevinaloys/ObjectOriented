@@ -24,12 +24,12 @@ public class SideBarMiddle extends JPanel {
 		displaywindow.setPreferredSize(new Dimension(250, 400));
 		displaywindow.setBackground(new Color(55, 54, 86));
 		
-		datawindow.setPreferredSize(new Dimension(250, 420));
+		datawindow.setPreferredSize(new Dimension(250, 500));
 		datawindow.setBackground(new Color(55, 54, 86));
 		
 		add(datawindow, BorderLayout.NORTH);
 		add(displaywindow, BorderLayout.SOUTH);
-		
+			
 		
 	}
 	

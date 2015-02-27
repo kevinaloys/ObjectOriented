@@ -17,7 +17,7 @@ public class RightBar extends JPanel {
 		setLayout(new BorderLayout());
 		
 		rightbartop.setBackground(new Color(255,255, 255));
-		rightbartop.setPreferredSize(new Dimension(650, 250));
+		rightbartop.setPreferredSize(new Dimension(650, 260));
 		
 		rightbarbottom.setBackground(new Color(255, 255, 255));
 
@@ -29,5 +29,10 @@ public class RightBar extends JPanel {
 	public void setStringListener(StringListener listener)
 	{
 		rightbarbottom.setStringListener(listener);
-	}	
+	}
+	
+	public void startCounter(int time, String ovenstatus)
+	{
+		rightbartop.startCounter(time, ovenstatus);
+	}
 }
