@@ -153,6 +153,7 @@ public class RightBarBottom extends JPanel implements ActionListener {
 		gc.fill = GridBagConstraints.NONE;
 		add(start, gc);
 		
+		
 	}
 	
 	public void setStringListener(StringListener listener)
@@ -251,6 +252,7 @@ public class RightBarBottom extends JPanel implements ActionListener {
 			if(textListener != null)
 			{
 				textListener.start("start");
+				
 			}
 		}
 	}

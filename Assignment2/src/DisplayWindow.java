@@ -22,11 +22,7 @@ public class DisplayWindow extends JPanel {
 	private JLabel displayCelsius;
 	private JRadioButton optionFahrenheit;
 	private JRadioButton optionCelsius;
-	private JLabel dispF;
 	
-	String messageF;
-	
-	private SideBarMiddle sidebarmiddle;
 	public DisplayWindow()
 	{
 		fahrenheit = new JLabel("Fahrenheit");
@@ -57,7 +53,6 @@ public class DisplayWindow extends JPanel {
 		
 		GridBagConstraints gc = new GridBagConstraints();
 		GridBagConstraints f = new GridBagConstraints();
-		GridBagConstraints o = new GridBagConstraints();
 		
 		gc.gridx = 0;
 		gc.gridy = 0;
@@ -145,7 +140,6 @@ public class DisplayWindow extends JPanel {
 			}
 			
 		});
-		
 		
 	}
 }

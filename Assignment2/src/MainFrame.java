@@ -21,6 +21,8 @@ public class MainFrame extends JFrame{
 	private String ovenstatus;
 	private App app;
 	
+	private MessageListener messageListener;
+	
 	public MainFrame()
 	{
 		super("Alpha2Oven");
@@ -79,6 +81,7 @@ public class MainFrame extends JFrame{
 				app.start();
 				System.out.println(app.getErrorMessage(getCurrentTemperatureInInteger(), getTime(), getPlaced()));
 				System.out.println(app.getStatus());
+				
 			}
 		});
 
@@ -93,7 +96,7 @@ public class MainFrame extends JFrame{
 			public void temperatureIn(String tempUnit)
 			{
 				tempUnits = tempUnit;
-			}
+			} 
 			
 		});	
 	}
@@ -105,6 +108,11 @@ public class MainFrame extends JFrame{
 		sidebar.appendTemperatureField(number);
 	}
 	
+	public void setMessageListener(MessageListener listener)
+	{
+		messageListener = listener;
+	}
+		
 	private String getCurrentTemperature()
 	{
 		return sidebar.getCurrentTemperature();
@@ -154,4 +162,6 @@ public class MainFrame extends JFrame{
 		String f = Integer.toString(app.getTemperatureInF());
 		return f;
 	}
+	
+	
 }
