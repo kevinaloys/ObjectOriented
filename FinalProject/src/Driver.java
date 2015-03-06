@@ -13,7 +13,10 @@ import com.mongodb.MongoClient;
 public class Driver {
 	private DB db;
 	private DBCollection col;
-
+	private String[] months = {"January", "February","March",
+			"April","May", "June", "July", "August",
+			"September", "October", "November", "December"};
+	
 	Driver()
 	{	
 		try
@@ -33,15 +36,8 @@ public class Driver {
 		col.insert(object);
 	}
 	
-	public void query(String key, String value, String collection)
-	{
-		BasicDBObject query = new BasicDBObject(key, value);
-		col = db.getCollection(collection);
-		DBCursor dbCursor = col.find(query);
-		while(dbCursor.hasNext())
-		{
-			System.out.println(dbCursor.next());
-		}
-	}
+	
+	
+	
 }
 
