@@ -8,7 +8,7 @@ import com.mongodb.MongoClient;
 
 /**
  * 
- * @author Kevin Aloysius
+ * @author Kevin Aloysius, Santa Clara University
  * 
  */
 public class Driver {
@@ -42,10 +42,10 @@ public class Driver {
 	 */
 	public boolean incFund(int userid, int amount)
 	{
-		
+		//Set collection to user collection.
 		col = db.getCollection("user");
-		//Funds increment
 		
+		//Funds increment	
 		BasicDBObject query = new BasicDBObject("id", userid);
 		BasicDBObject dbobject = new BasicDBObject()
 		.append("$inc", new BasicDBObject("expenses." + currentMonth, amount));
@@ -104,14 +104,38 @@ public class Driver {
 		return true;
 	}
 	
-	public void setSpecialNeed(String need)
+	
+	
+	/**
+	 * Sets additional dietary requirements for the Campus Card User.
+	 * @param userid Unique ID of the Campus Cafe User.
+	 * @param need Specifies the dietary need.
+	 * @return
+	 */
+	public boolean setSpecialNeed(int userid, String need)
 	{
-		
+		col = db.getCollection("user");
+		BasicDBObject query = new BasicDBObject("id", userid);
+		BasicDBObject dbobject = new BasicDBObject()
+		.append("$push", new BasicDBObject("diet", need));
+		col.update(query, dbobject);
+		return true;
 	}
 	
-	public void addCaloriePerDay(int userid, int calories)
+	/**
+	 * Sets the minimum caloric intake per day
+	 * @param userid Unique ID of the Campus Cafe User.
+	 * @param calories Specifies the minimum caloric intake per day.
+	 * @return
+	 */
+	public boolean addCaloriePerDay(int userid, int calories)
 	{
-		
+		col = db.getCollection("user");
+		BasicDBObject query = new BasicDBObject("id", userid);
+		BasicDBObject dbobject = new BasicDBObject()
+		.append("$set", new BasicDBObject("calorieperday", calories));
+		col.update(query, dbobject);
+		return true;
 	}
 }
 
