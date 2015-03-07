@@ -16,7 +16,7 @@ public class BarGraph extends Application {
 	
     @Override 
     public void start(Stage stage) {
-        stage.setTitle("Caloric Consumption");
+        
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         final BarChart<String,Number> bc = 
@@ -31,11 +31,13 @@ public class BarGraph extends Application {
         {
         	series2.getData().add(new XYChart.Data(months[i], i));
         }
-        Scene scene  = new Scene(bc,1200,800);
         bc.getData().addAll(series2);
+        
+        Scene scene  = new Scene(bc,1200,800);
         stage.setScene(scene);
         stage.show();
-        launch();
+        stage.setTitle("Caloric Consumption");
+ 
     }
  
     public static void main(String args[]) {

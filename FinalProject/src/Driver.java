@@ -13,9 +13,6 @@ import com.mongodb.MongoClient;
 public class Driver {
 	private DB db;
 	private DBCollection col;
-	private String[] months = {"January", "February","March",
-			"April","May", "June", "July", "August",
-			"September", "October", "November", "December"};
 	
 	Driver()
 	{	
