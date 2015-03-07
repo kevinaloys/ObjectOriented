@@ -37,7 +37,7 @@ public class BarGraph extends Application {
         stage.setScene(scene);
         stage.show();
         stage.setTitle("Caloric Consumption");
- 
+
     }
  
     public static void main(String args[]) {

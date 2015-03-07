@@ -1,6 +1,6 @@
 public interface Diet
 {
-	void setCaloricValue(double calories);
+	void setCaloricValue(String calories);
 	void getCaloricValue();
 	void setDietRequirements();
 }

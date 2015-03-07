@@ -1,10 +1,12 @@
 db.user.drop();
 
 db.user.insert({
+    id : 1,
 	name : { first : "Kevin", last : "Aloysius" },
 	age : 22,
 	email : 'kevinaloys@rocketmail.com',
-	diet : ['high sugar','high sodium','high gluten','high protein'],
+	cardexpiry : 2018,
+    diet : ['high sugar','high sodium','high gluten','high protein'],
 	calories : {
 		'January':1234,
 		'February':25434,
@@ -36,8 +38,10 @@ db.user.insert({
 
 db.user.insert({
         name : { first : "Larry", last : "Page" },
+        id : 2,
         age : 44,
         email : 'larrypage@google.com',
+        cardexpiry : 2016,
         diet : ['low sugar','low sodium','low gluten','high protein'],
         calories : {
                 'January':2134,
