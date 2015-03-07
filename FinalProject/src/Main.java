@@ -8,7 +8,7 @@ import com.campuscafe.chart.*;
  * @author Kevin Aloysius
  *
  */
-//MongoDB DataBase Testing.
+
 public class Main {
 	public static void main(String[] args)
 	{

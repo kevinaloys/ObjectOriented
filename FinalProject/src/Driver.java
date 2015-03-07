@@ -13,10 +13,6 @@ import com.mongodb.MongoClient;
 public class Driver {
 	private DB db;
 	private DBCollection col;
-	private String[] months = {"January", "February","March",
-			"April","May", "June", "July", "August",
-			"September", "October", "November", "December"};
-	
 	Driver()
 	{	
 		try
@@ -37,7 +33,29 @@ public class Driver {
 	}
 	
 	
+	public void incFund(String userid, String amount)
+	{
+		
+	}
 	
+	public void decFund(String userid, String amount)
+	{
+		
+	}
 	
+	public void incCalories(String userid, String calories)
+	{
+		
+	}
+	
+	public void setSpecialNeeds(String needs)
+	{
+		
+	}
+	
+	public void addBoundaryCalories(String userid, String calories)
+	{
+		
+	}
 }
 
