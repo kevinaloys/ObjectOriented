@@ -35,7 +35,7 @@ public class BarGraph extends Application {
         bc.getData().addAll(series2);
         stage.setScene(scene);
         stage.show();
-        launch();
+        
     }
  
     public static void main(String args[]) {
