@@ -1,8 +1,11 @@
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
@@ -136,6 +139,50 @@ public class Driver {
 		.append("$set", new BasicDBObject("calorieperday", calories));
 		col.update(query, dbobject);
 		return true;
+	}
+	
+	/**
+	 * Gets the minimum caloric intake per day
+	 * @param userid Unique ID of the Campus Cafe User.
+	 * @return String specifying the current caloric intake of user per day.
+	 */
+	public String getCaloriePerDay(int userid)
+	{
+		col = db.getCollection("user");
+		BasicDBObject getcurrent = new BasicDBObject("id", userid);
+		DBObject obj = col.findOne(getcurrent);
+		String calorieperday = obj.get("calorieperday").toString();
+		return calorieperday;
+	}
+	
+	/**
+	 * Gets the the Expiry Year of the Campus User Card.
+	 * @param userid Unique ID of the Campus Cafe User.
+	 * @return Expiry Year of the Campus Card.
+	 */
+	public int getCardExpiry(int userid)
+	{
+		col = db.getCollection("user");
+		BasicDBObject getcurrent = new BasicDBObject("id", userid);
+		DBObject obj = col.findOne(getcurrent);
+		Double cardexpiry = (Double) obj.get("cardexpiry");
+		int card = cardexpiry.intValue();
+		return card;
+	}
+	
+	/**
+	 * Gets the age of the Campus Card User.
+	 * @param userid Unique ID of the Campus Cafe User.
+	 * @return Age of the Campus Card User.
+	 */
+	public int getAge(int userid)
+	{
+		col = db.getCollection("user");
+		BasicDBObject getcurrent = new BasicDBObject("id", userid);
+		DBObject obj = col.findOne(getcurrent);
+		Double userage = (Double) obj.get("age");
+		int age = userage.intValue();
+		return age;
 	}
 }
 
