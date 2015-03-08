@@ -23,6 +23,7 @@ db.user.insert({
 		},
 	expenses : {
 		'January': 254,
+       	'February': 624,
 		'March' : 231,
 		'April' : 512,
 		'May' : 132,
@@ -59,6 +60,7 @@ db.user.insert({
                 },
         expenses : {
                 'January': 154,
+                'February':135,
                 'March' : 131,
                 'April' : 412,
                 'May' : 152,

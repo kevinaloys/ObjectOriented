@@ -197,7 +197,8 @@ public class Driver {
 		{
 			Double expenses = (Double)((DBObject)obj.get("expenses")).get(month);
 			int expense = expenses.intValue();
-			map.put(month, expense);	
+			map.put(month, expense);
+			System.out.println(expense);
 		}
 		
 		return map;
