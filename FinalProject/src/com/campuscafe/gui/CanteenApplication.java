@@ -16,7 +16,12 @@ public class CanteenApplication extends JFrame
 	
 	public CanteenApplication()
 	{
-		
+		try { 
+		    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) 
+		{
+		    e.printStackTrace();
+		}
 	}
 	public CanteenApplication(String id)
 	{

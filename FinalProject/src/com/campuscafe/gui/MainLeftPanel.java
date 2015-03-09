@@ -25,6 +25,12 @@ public class MainLeftPanel extends JPanel implements ActionListener
 	/***/
 	public MainLeftPanel(String uid)
 	{
+		try { 
+		    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) 
+		{
+		    e.printStackTrace();
+		}
 		this.userID = uid;
 		
 		this.setBorder(BorderFactory.createLineBorder(Color.black));

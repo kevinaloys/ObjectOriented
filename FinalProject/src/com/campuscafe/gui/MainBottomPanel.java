@@ -13,6 +13,13 @@ private StatusPanel statusPanel;
 /***/
 public MainBottomPanel()
 {
+	try { 
+	    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	} catch (Exception e) 
+	{
+	    e.printStackTrace();
+	}
+	
 	statusPanel = new StatusPanel();
 	
 	leftPanel = new BottomLeft(statusPanel);

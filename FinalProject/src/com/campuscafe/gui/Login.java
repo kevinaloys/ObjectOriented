@@ -1,6 +1,8 @@
 package com.campuscafe.gui;
 
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -25,15 +27,21 @@ private JPanel panel;
 
 	public Login()
 	{	 
-		Container contentPane = getContentPane();	 
+		 try { 
+		    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		 } catch (Exception e) 
+		 {
+		    e.printStackTrace();
+		 }
+		 Container contentPane = getContentPane();	 
 		 
 		 setTitle("CampusCafe");
 		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);                   
 	    
 		 setVisible(true);
 		 
-		panel = new JPanel();
-		contentPane.add(panel);
+		 panel = new JPanel();
+		 contentPane.add(panel);
 		
 		 expiryDateLabel = new JLabel("Enter Date : ");
 		 expiryDateLabel.setFont(new Font("Calibri",Font.BOLD,25));
