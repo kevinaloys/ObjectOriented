@@ -1,5 +1,6 @@
 package com.campuscafe.implementation;
 import java.net.UnknownHostException;
+import com.campuscafe.chart.*;
 /**
  * 
  * @author Kevin Aloysius
@@ -9,9 +10,13 @@ import java.net.UnknownHostException;
 public class Main {
 	public static void main(String[] args) throws UnknownHostException
 	{
-		
-		Driver driver = new Driver();
-		driver.getExpensesDataForGraph(1);
+		/*new Thread() {
+            @Override
+            public void run() {
+                javafx.application.Application.launch(CaloriesBarGraph.class);
+            }
+        }.start();
+		CaloriesBarGraph caloriesbargraph = CaloriesBarGraph.setUserid(1);*/
 		
 	}
 }

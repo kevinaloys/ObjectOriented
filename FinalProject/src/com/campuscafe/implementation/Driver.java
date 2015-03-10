@@ -44,7 +44,7 @@ public class Driver {
 	 * @param amount Amount that needs to be added to the fund.
 	 * @return
 	 */
-	public boolean incFund(int userid, int amount)
+	public boolean incExpenses(int userid, int amount)
 	{
 		//Set collection to user collection.
 		col = db.getCollection("user");
@@ -66,16 +66,61 @@ public class Driver {
 	 * @param amount Amount that needs to be reduced from the fund.
 	 * @return
 	 */
-	public boolean decFund(int userid, int amount)
+	public boolean decExpenses(int userid, int amount)
+	{
+		
+		col = db.getCollection("user");
+		BasicDBObject query = new BasicDBObject("id", userid);
+		BasicDBObject dbobject = new BasicDBObject()
+		.append("$inc", new BasicDBObject("expenses." + currentMonth, (amount * -1)));
+		col.update(query, dbobject);
+		return true;
+		
+		
+	}
+	
+	/**
+	 * Get the current Funds of a specific User.
+	 * @param userid Unique ID of the Campus Cafe User.
+	 * @return The amount of funds in the Users Account.
+	 */
+	public int getFunds(int userid)
 	{
 		col = db.getCollection("user");
-		BasicDBObject getcurrent = new BasicDBObject("id", userid);
-		DBObject obj = col.findOne(getcurrent);
-		String current = ((DBObject)obj.get("expenses")).get(currentMonth).toString();
-		double newamount;
-		newamount = Double.parseDouble(current);
-		newamount = newamount - amount;
-		
+		BasicDBObject getCurrent = new BasicDBObject("id", userid);
+		DBObject obj = col.findOne(getCurrent);
+		Double fund = (Double)obj.get("funds");
+		int funds = fund.intValue();
+		return funds;
+	}
+	
+	/**
+	 * Add funds by a particular amount to the users account.
+	 * @param userid Unique ID of the Campus Cafe User.
+	 * @param amount Specifies the amount that needs to be added to the users account.
+	 * @return
+	 */
+	public boolean addFunds(int userid, int amount)
+	{
+		col = db.getCollection("user");
+		BasicDBObject query = new BasicDBObject("id", userid);
+		BasicDBObject dbobject = new BasicDBObject()
+		.append("$inc", new BasicDBObject("funds", amount));
+		col.update(query, dbobject);
+		return true;
+	}
+	
+	
+	/**
+	 * 
+	 * @param userid Unique ID of the Campus Cafe User.
+	 * @param amount Specifies the amount that needs to be decremented from the users account.
+	 * @return
+	 */
+	public boolean decFunds(int userid, int amount)
+	{
+		int current = this.getFunds(userid);
+		int newamount = current - amount;
 		if(newamount <= 0)
 		{
 			return false;
@@ -85,13 +130,11 @@ public class Driver {
 			col = db.getCollection("user");
 			BasicDBObject query = new BasicDBObject("id", userid);
 			BasicDBObject dbobject = new BasicDBObject()
-			.append("$inc", new BasicDBObject("expenses." + currentMonth, (amount * -1)));
+			.append("$inc", new BasicDBObject("funds", (-1 * amount)));
 			col.update(query, dbobject);
 			return true;
 		}
-		
 	}
-	
 	/**
 	 * Increments the Calories in the Document(MongoDB) by the said calories.
 	 * @param userid Unique ID of the Campus Cafe User.
@@ -198,7 +241,7 @@ public class Driver {
 			Double expenses = (Double)((DBObject)obj.get("expenses")).get(month);
 			int expense = expenses.intValue();
 			map.put(month, expense);
-			System.out.println(expense);
+			
 		}
 		
 		return map;
@@ -216,7 +259,7 @@ public class Driver {
 			Double calories = (Double)((DBObject)obj.get("calories")).get(month);
 			int calorie = calories.intValue();
 			map.put(month, calorie);
-			System.out.println(calorie);
+			
 		}
 		
 		return map;

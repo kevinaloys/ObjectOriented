@@ -1,6 +1,8 @@
 package com.campuscafe.gui;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -23,5 +25,6 @@ public class GraphType extends JPanel
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		add(diet);
 		add(expense);
-	}
+	}	
+	
 }	

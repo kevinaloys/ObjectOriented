@@ -32,7 +32,7 @@ public class MainLeftPanel extends JPanel implements ActionListener
 		    e.printStackTrace();
 		}
 		this.userID = uid;
-		
+		this.setBackground(new Color(55, 54, 86));
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		//Canteen icon/(logo)
 		ImageIcon icon = new ImageIcon("C:/Users/Varada/CampusCafe/Canteen/res/icon.jpg");

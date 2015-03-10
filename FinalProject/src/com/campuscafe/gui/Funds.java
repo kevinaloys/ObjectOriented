@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.border.*;
-
+import com.campuscafe.implementation.*;
 /***/
 public class Funds extends JPanel implements ActionListener
 {
@@ -15,7 +15,7 @@ public class Funds extends JPanel implements ActionListener
 	
 	private String userID;
 	private StatusPanel status;
-
+    private Driver driver;
 	public Funds()
 	{
 		

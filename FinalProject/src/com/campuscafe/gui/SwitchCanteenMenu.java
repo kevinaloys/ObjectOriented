@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class SwitchCanteenMenu extends JPanel implements ActionListener
 {
-private String[] Cafes = { "MainCafe", "InsideLibraryCafe", "FoodTruckCafe", "BevarageCafe"};
+private String[] Cafes = { "Benson Center", "Learning Commons Library", "Malley Center", "Leavey Center"};
 private String[] vendingMachines = { "MainVM", "InsideLibraryVM", "LabVM", "BookStoreVM"};
 
 private JComboBox cafeCombo;
@@ -41,7 +41,7 @@ private void setButtonProperties()
 	this.vendingMachine.setActionCommand("VM");
 	
 	this.cafeCombo.addActionListener(this);
-	this.cafeCombo.setActionCommand("Caf�s");
+	this.cafeCombo.setActionCommand("Cafes");
 }
 /**
 @Override */

@@ -19,16 +19,19 @@ public class CaloriesBarGraph extends Application {
 	String[] months = {"January", "February","March",
 			"April","May", "June", "July", "August",
 			"September", "October", "November", "December"};
-		
+	HashMap<String, Integer> map = new HashMap<String, Integer>();
+	private static int userid;
+	public static CaloriesBarGraph caloriesbargraph;
+	
+	public static CaloriesBarGraph setUserid(int userId)
+	{
+    	userid = userId;
+    	return caloriesbargraph;
+	}
     
+	
     public void start(Stage stage) {
-    	
-    	
-    	HashMap<String, Integer> map = new HashMap<String, Integer>();
-    	Driver driver = new Driver();
-    	map = driver.getCaloriesDataForGraph(1);
-    	
-    	
+
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         final BarChart<String,Number> bc = 
@@ -40,6 +43,9 @@ public class CaloriesBarGraph extends Application {
         XYChart.Series series2 = new XYChart.Series();
         series2.setName("2015");
         
+        
+        Driver driver = new Driver();
+        map = driver.getCaloriesDataForGraph(userid);
         
         for(int i = 0; i < 12; i++)
         {

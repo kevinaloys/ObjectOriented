@@ -27,7 +27,10 @@ private JPanel panel;
 
 	public Login()
 	{	 
-		 try { 
+		
+		 try 
+		 { 
+			//Author : Kevin Aloysius
 		    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		 } catch (Exception e) 
 		 {

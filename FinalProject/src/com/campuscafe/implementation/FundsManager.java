@@ -1,15 +1,20 @@
 package com.campuscafe.implementation;
 
-public class FundsManager implements Funds{
-
+public class FundsManager {
+	private Driver driver = new Driver();
 	
-	public void setFund(String fund) {
-		
-		
+	public void purchase(int userid, int amount)
+	{
+		boolean status = driver.decFunds(userid, amount);
+		if(status == true)
+		{
+			driver.incExpenses(userid, amount);
+		}
 	}
-	public void getFund() {
-		
-		
+	
+	public int getFunds(int userid)
+	{
+		int funds = driver.getFunds(userid);
+		return funds;
 	}
-
 }

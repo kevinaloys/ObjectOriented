@@ -7,6 +7,7 @@ db.user.insert({
 	email : 'kevinaloys@rocketmail.com',
 	cardexpiry : 2018,
     diet : ['high sugar','high sodium','high gluten','high protein'],
+    funds : 0,
 	calories : {
 		'January':1234,
 		'February':25434,
@@ -23,8 +24,8 @@ db.user.insert({
 		},
 	expenses : {
 		'January': 254,
-       	'February': 624,
 		'March' : 231,
+        'February':400,
 		'April' : 512,
 		'May' : 132,
 		'June' : 512,
@@ -44,6 +45,7 @@ db.user.insert({
         email : 'larrypage@google.com',
         cardexpiry : 2016,
         diet : ['low sugar','low sodium','low gluten','high protein'],
+        funds : 0,
         calories : {
                 'January':2134,
                 'February':51434,
@@ -60,7 +62,7 @@ db.user.insert({
                 },
         expenses : {
                 'January': 154,
-                'February':135,
+                'February': 196,
                 'March' : 131,
                 'April' : 412,
                 'May' : 152,

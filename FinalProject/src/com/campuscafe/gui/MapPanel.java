@@ -29,7 +29,7 @@ public class MapPanel extends JPanel
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Dimension maxSize = new Dimension((screenSize.width)/3, (screenSize.height)/3);
 		
-		sizedMap = "res/map.png";
+		sizedMap = "res/MapImage.png";
 /*		try	{sizedMap = ImageIO.read(new File("C:/Users/Varada/CampusCafe/Canteen/res/map.jpg"));}
 		catch(IOException ex) {}*/
 		
@@ -54,8 +54,6 @@ public class MapPanel extends JPanel
 	public void setMapLayout()
 	{
 		map.setLayout(new FlowLayout());
-
-		map.add(cafe);
 
 	}
 

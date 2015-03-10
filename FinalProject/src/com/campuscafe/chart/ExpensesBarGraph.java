@@ -18,18 +18,22 @@ import com.campuscafe.implementation.*;
  *
  */
 public class ExpensesBarGraph extends Application {
-	String[] months = {"January", "February","March",
+	private String[] months = {"January", "February","March",
 			"April","May", "June", "July", "August",
 			"September", "October", "November", "December"};
+	private HashMap<String, Integer> map = new HashMap<String, Integer>();
+	private static int userid;
 	
+	public static void setUserId(int userId)
+	{
+		userid = userId;
+	}
 	
     @Override 
     public void start(Stage stage) {
-        
-    	HashMap<String, Integer> map = new HashMap<String, Integer>();
+ 
     	Driver driver = new Driver();
-    	map = driver.getExpensesDataForGraph(1);
-    	
+    	map = driver.getExpensesDataForGraph(userid);
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         final BarChart<String,Number> bc = 

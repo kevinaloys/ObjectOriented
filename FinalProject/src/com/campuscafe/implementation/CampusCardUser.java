@@ -3,9 +3,7 @@ public class CampusCardUser
 {
 	private String cardUserName;
 	private String cardUserId;
-	
-	
-	
+
 	public void setUserName(String name)
 	{
 		cardUserName = name;

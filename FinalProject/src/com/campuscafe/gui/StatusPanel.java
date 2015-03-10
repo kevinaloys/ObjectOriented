@@ -1,5 +1,7 @@
 package com.campuscafe.gui;
 
+import com.campuscafe.implementation.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.text.*;
@@ -15,8 +17,9 @@ public class StatusPanel extends JPanel
 
 	public StatusPanel()
 	{
+		this.setBackground(new Color(55, 54, 86));
 	display = new JLabel(status);
-	display.setFont(new Font("Calibri",Font.BOLD,22));
+	display.setFont(Utils.createFont("/res/Ubuntu-L.ttf").deriveFont(Font.PLAIN, 22));
 	display.setHorizontalAlignment(JLabel.CENTER);
 	setLayout();
 	}

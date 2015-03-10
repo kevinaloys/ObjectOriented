@@ -19,7 +19,6 @@ public MainBottomPanel()
 	{
 	    e.printStackTrace();
 	}
-	
 	statusPanel = new StatusPanel();
 	
 	leftPanel = new BottomLeft(statusPanel);
