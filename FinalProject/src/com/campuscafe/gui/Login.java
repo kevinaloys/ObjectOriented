@@ -61,7 +61,7 @@ private JPanel panel;
 		 expiryDateField = new JTextField();
 		 expiryDateField.setFont(new Font("Calibri",Font.BOLD,20));
 		 expiryDateField.setHorizontalAlignment(JTextField.CENTER);
-		 okay = new JButton("Okay");
+		 okay = new JButton("Login");
 		 okay.setFont(new Font("Calibri",Font.BOLD,25));
 		 
 		 setLayout();

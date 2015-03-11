@@ -29,7 +29,7 @@ public class Funds extends JPanel implements ActionListener
 		
 		Font font = new Font("Calibri" , Font.BOLD, 22);
 		
-		add = new JButton("Add Amount : ");
+		add = new JButton("Add Amount");
 		add.setFont(font);
 		add.setPreferredSize(new Dimension(70,80));
 		add.setAlignmentX(CENTER_ALIGNMENT);
@@ -66,16 +66,29 @@ public class Funds extends JPanel implements ActionListener
 		
 		if(command.equals("add"))
 		{
-			//write this.textfield with uid to db.
 			int currentFunds = 0;
-			//1. get from db
+			int amount;
+			FundsManager f = new FundsManager();
+			int userid = Integer.parseInt(this.userID);
 			
-			//2. add this.funds.gettext to db at the this.userid
+			//Fetching the amount from the Text field.
+			String amountToAdd = funds.getText();
+			try
+			{
+				amount = Integer.parseInt(amountToAdd);
+			}
+			catch(NumberFormatException e)
+			{
+				amount = 0;
+			}
 			
-			//display in status panel
+			//Inserting the amount into the database
+			boolean status = f.addFunds(userid, amount);
+			
+			//Fetching the added amount from the funds.
+			currentFunds = f.getFunds(userid);
+			
 			String output =  "User ID: " + this.userID + "\nCurrent funds: " + currentFunds;
-							   // get funds from db
-														
 			this.status.setDisplay(output);			
 				
 		}		

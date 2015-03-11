@@ -70,12 +70,15 @@ public class Diet extends JPanel implements ActionListener
 		{	
 			int userid = Integer.parseInt(this.userID);
 			String boundary = this.diet.getText();
+			int caloriesperday = Integer.parseInt(boundary);
+			driver.addCaloriePerDay(userid, caloriesperday);
 			// String value of the add diet requirements that needs to be added into the database
 		}
 		if(command.equals("spNeeds"))
 		{
 			int userid = Integer.parseInt(this.userID);
-			String specialneeds = this.specialNeeds.getText(); // String value of special requirements to get the special needs and put it into the database.
+			String specialneeds = this.specialNeeds.getText();
+		// String value of special requirements to get the special needs and put it into the database.
 		}
 		
 	}

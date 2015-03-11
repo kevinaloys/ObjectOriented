@@ -22,7 +22,7 @@ public class ViewFunds extends JPanel implements ActionListener
 		
 		Font font = new Font("Calibri" , Font.BOLD, 22);
 		
-		view = new JButton("View Amount : ");
+		view = new JButton("View Amount");
 		view.setFont(font);
 		view.setPreferredSize(new Dimension(70,80));
 		view.setAlignmentX(CENTER_ALIGNMENT);
@@ -58,7 +58,8 @@ public class ViewFunds extends JPanel implements ActionListener
 			int userid = Integer.parseInt(this.userID);
 			FundsManager fund = new FundsManager();
 			int balancefunds = fund.getFunds(userid);
-			this.funds.setText("5");
+			String balance = Integer.toString(balancefunds);
+			this.funds.setText(balance);
 			
 		}
 	}

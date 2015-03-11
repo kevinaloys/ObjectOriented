@@ -39,7 +39,7 @@ db.user.insert({
 	});
 
 db.user.insert({
-        name : { first : "Larry", last : "Page" },
+        name : { first : "Varada", last : "Gurjar" },
         id : 2,
         age : 44,
         email : 'larrypage@google.com',

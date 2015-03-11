@@ -6,6 +6,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import com.campuscafe.implementation.Driver;
+
 public class ViewDiet extends JPanel implements ActionListener
 {
 	private JButton viewBoundary;
@@ -65,14 +67,26 @@ public class ViewDiet extends JPanel implements ActionListener
 	public void actionPerformed(ActionEvent event) 
 	{
 		String command = event.getActionCommand();
+		Driver driver = new Driver();
 		//this.userid
 		if(command.equals("boundary"))
 		{
+			try
+			{
+				int userid = Integer.parseInt(this.userID);
+				String calorieperday = driver.getCaloriePerDay(userid);
+				boundary.setText(calorieperday);
+			}
+			catch(NullPointerException e)
+			{
+				boundary.setText("0");
+			}
+			
 			
 		}
 		//1. view boundary -> get db value using id for cal/day
 		
-		//2. get cal consumed last month
+		//2. get cal consumed this current month;
 		if(command.equals("calories"))
 		{
 			
