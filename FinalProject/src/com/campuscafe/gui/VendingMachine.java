@@ -6,6 +6,11 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import com.campuscafe.implementation.DietManager;
+import com.campuscafe.implementation.Driver;
+import com.campuscafe.implementation.FundsManager;
+import com.campuscafe.implementation.SendSMS;
+
 public class VendingMachine extends JPanel implements ActionListener
 {
 	private JLabel item1, item2, item3, item4, item5, item6, item7, item8, item9;
@@ -127,6 +132,43 @@ public class VendingMachine extends JPanel implements ActionListener
 				String output =  "User ID: " + this.userID + "\nTotal: " + this.total + "$" +
 								 "\nCalories :" + this.calories + "cal";
 				this.panel.setDisplay(output);
+				
+				SendSMS sms = new SendSMS();
+				
+				FundsManager funds = new FundsManager();
+				DietManager diet = new DietManager();
+				int userid = Integer.parseInt(this.userID);
+				int calories = this.calories;
+				
+				boolean result = diet.incCalories(userid, calories, "");
+				System.out.println(result);
+				if(result == false)
+				{
+					Object[] options = {"Yes Please","No"};
+					JOptionPane optionPane = new JOptionPane();
+					optionPane.setAlignmentY(TOP_ALIGNMENT);
+					int n = optionPane.showOptionDialog(this, "Calories exceed the per day limit. \n " +
+							"Do you want to purchase ?",
+							"Confirm Purchase", JOptionPane.YES_NO_OPTION, 
+							JOptionPane.QUESTION_MESSAGE, null, 
+							options, options[0]);
+					
+					//if Yes . exceeding boundary cal condition ok by user
+					if(n == 0)
+					{
+						int totalamount = this.total;
+						funds.purchase(userid, totalamount);
+						diet.incCalories(userid, calories, "yes");
+						
+					}
+				}
+				if(result == true)
+				{
+					int totalamount = this.total;
+					funds.purchase(userid, totalamount);
+					diet.incCalories(userid, calories, "yes");
+					
+				}								
 			
 		}
 		if(command.equals("1"))

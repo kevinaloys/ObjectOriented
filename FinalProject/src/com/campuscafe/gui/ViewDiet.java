@@ -55,11 +55,11 @@ public class ViewDiet extends JPanel implements ActionListener
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(Box.createRigidArea(new Dimension(0,20)));
 		add(viewBoundary);
-		add(Box.createRigidArea(new Dimension(0,70)));
+		add(Box.createRigidArea(new Dimension(0,40)));
 		add(boundary);
 		add(Box.createRigidArea(new Dimension(0,70)));
 		add(viewCalories);
-		add(Box.createRigidArea(new Dimension(0,70)));
+		add(Box.createRigidArea(new Dimension(0,40)));
 		add(calories);
 	}
 	/**
