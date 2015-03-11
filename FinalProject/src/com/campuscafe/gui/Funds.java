@@ -25,7 +25,7 @@ public class Funds extends JPanel implements ActionListener
 	{
 		this.userID = userid;
 		this.status = panelStatus;
-		view = new ViewFunds(userid, panelStatus);
+		view = new ViewFunds(userid);
 		
 		Font font = new Font("Calibri" , Font.BOLD, 22);
 		
@@ -53,11 +53,12 @@ public class Funds extends JPanel implements ActionListener
 		add(Box.createRigidArea(new Dimension(0,70)));
 
 	}
+	/**Returns the ViewFunds object created inside the Funds constructor*/
 	public ViewFunds getViewFunds()
 	{
 		return this.view;
 	}
-	/**
+	/** Action performed on the Add funds in the Application
 	@Override */
 	public void actionPerformed(ActionEvent event) 
 	{
@@ -66,12 +67,15 @@ public class Funds extends JPanel implements ActionListener
 		if(command.equals("add"))
 		{
 			//write this.textfield with uid to db.
+			int currentFunds = 0;
+			//1. get from db
+			
+			//2. add this.funds.gettext to db at the this.userid
 			
 			//display in status panel
-			String output =  "User ID: " + this.userID + "\nCurrent funds: " ;
+			String output =  "User ID: " + this.userID + "\nCurrent funds: " + currentFunds;
 							   // get funds from db
-								// balance remaining
-						
+														
 			this.status.setDisplay(output);			
 				
 		}		

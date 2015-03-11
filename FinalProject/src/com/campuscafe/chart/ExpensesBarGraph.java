@@ -23,10 +23,12 @@ public class ExpensesBarGraph extends Application {
 			"September", "October", "November", "December"};
 	private HashMap<String, Integer> map = new HashMap<String, Integer>();
 	private static int userid;
+	public static ExpensesBarGraph expensesbargraph;
 	
-	public static void setUserId(int userId)
+	public static ExpensesBarGraph setUserId(int userId)
 	{
 		userid = userId;
+		return expensesbargraph;
 	}
 	
     @Override 

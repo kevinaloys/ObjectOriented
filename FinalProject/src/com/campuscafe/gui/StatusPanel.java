@@ -19,7 +19,8 @@ public class StatusPanel extends JPanel
 	{
 		this.setBackground(new Color(55, 54, 86));
 	display = new JLabel(status);
-	display.setFont(Utils.createFont("/res/Ubuntu-L.ttf").deriveFont(Font.PLAIN, 22));
+	display.setFont(Utils.createFont("/res/Ubuntu-L.ttf").deriveFont(Font.BOLD, 25));
+	display.setForeground(Color.white);
 	display.setHorizontalAlignment(JLabel.CENTER);
 	setLayout();
 	}

@@ -9,11 +9,15 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 
+import com.campuscafe.chart.CaloriesBarGraph;
+import com.campuscafe.chart.ExpensesBarGraph;
+
+
 public class MainLeftPanel extends JPanel implements ActionListener
 {
 	private JLabel logo;
 	private JLabel currentTime;
-	private JButton map;
+	
 	private JButton viewGraph;
 	private GraphType graphType;
 	//	Center and Bottom Panels
@@ -43,8 +47,8 @@ public class MainLeftPanel extends JPanel implements ActionListener
 		
 		//MainPanel components	
 		this.currentTime = new JLabel(dateFormat.format(date));		
-		this.map = new JButton("View Map");		
-		this.map.setActionCommand("ViewMap");
+		
+		
 		
 		this.viewGraph = new JButton("View Graph");			
 		this.graphType = new GraphType();		
@@ -63,15 +67,14 @@ public class MainLeftPanel extends JPanel implements ActionListener
 	public void setBoxLayout()
 	{	 
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-		
+		add(Box.createRigidArea(new Dimension(0,30)));
 		add(logo);
-		add(Box.createRigidArea(new Dimension(0,20)));
+		add(Box.createRigidArea(new Dimension(0,40)));
 		add(currentTime);
-		add(Box.createRigidArea(new Dimension(0,20)));
-		add(map);		
-		add(Box.createRigidArea(new Dimension(0,20)));	
+			
+		add(Box.createRigidArea(new Dimension(0,40)));	
 		add(viewGraph);
-		add(Box.createRigidArea(new Dimension(0,20)));
+		add(Box.createRigidArea(new Dimension(0,60)));
 		add(graphType);
 		add(Box.createRigidArea(new Dimension(0,100)));
 		add(displayPanel);
@@ -84,11 +87,11 @@ public class MainLeftPanel extends JPanel implements ActionListener
 		logo.setAlignmentX(CENTER_ALIGNMENT);
 		currentTime.setFont(new Font("Calibri",Font.BOLD, 20));
 		currentTime.setAlignmentX(CENTER_ALIGNMENT);
-		
-		map.setAlignmentX(CENTER_ALIGNMENT);	
-		map.setFont(font);
+		currentTime.setForeground(Color.white);
 		viewGraph.setAlignmentX(CENTER_ALIGNMENT);
 		viewGraph.setFont(font);
+		viewGraph.setActionCommand("graph");
+		viewGraph.addActionListener(this);
 	}
 	/***/
 	public CenterPanel getDisplay()
@@ -104,9 +107,30 @@ public class MainLeftPanel extends JPanel implements ActionListener
 	@Override */
 	public void actionPerformed(ActionEvent event) 
 	{
-		if(event.getActionCommand() == "ViewMap")
+		if(event.getActionCommand() == "graph")
 		{
-			//this.displayPanel;
+			if(this.graphType.getDietButton().isSelected())
+			{
+						new Thread() {
+						@Override
+						public void run() {
+						javafx.application.Application.launch(CaloriesBarGraph.class);
+						}
+						}.start();
+						int user = Integer.parseInt(userID);
+						CaloriesBarGraph bargraph = CaloriesBarGraph.setUserid(user);
+			}
+			if(this.graphType.getExpenseButton().isSelected())
+			{
+					new Thread() {
+					@Override
+					public void run() {
+					javafx.application.Application.launch(ExpensesBarGraph.class);
+					}
+					}.start();
+					int user = Integer.parseInt(userID);
+					ExpensesBarGraph expensesbargraph = ExpensesBarGraph.setUserId(user);
+			}
 		}
 	}
 }

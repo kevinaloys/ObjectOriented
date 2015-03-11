@@ -15,8 +15,7 @@ public class MapPanel extends JPanel
 {
 	private String sizedMap;
 	private JLabel map;
-	private JButton cafe;
-	private JButton cafe2;
+	private JLabel coordinateLabel;
 	
 	public MapPanel()
 	{
@@ -30,18 +29,13 @@ public class MapPanel extends JPanel
 		Dimension maxSize = new Dimension((screenSize.width)/3, (screenSize.height)/3);
 		
 		sizedMap = "res/MapImage.png";
-/*		try	{sizedMap = ImageIO.read(new File("C:/Users/Varada/CampusCafe/Canteen/res/map.jpg"));}
-		catch(IOException ex) {}*/
 		
 		ImageIcon mapLabel = new ImageIcon(getClass().getClassLoader().getResource(sizedMap));	
 		map = new JLabel(mapLabel);
-		cafe = new JButton("cafe1");
-		cafe.setPreferredSize(new Dimension(100,50));
-		cafe.setHorizontalAlignment(JButton.CENTER);
+		coordinateLabel = new JLabel("");
+		coordinateLabel.setPreferredSize(new Dimension(35,35));		
+		//add code here
 		
-		cafe2 = new JButton("cafenew");
-		
-		setMapLayout();
 		setLayout();
 	}
 	public void setLayout()
@@ -49,12 +43,11 @@ public class MapPanel extends JPanel
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));		
 
 		add(map);
+		add(coordinateLabel);
 	}
-	/***/
-	public void setMapLayout()
+	public void setXY(String value)
 	{
-		map.setLayout(new FlowLayout());
-
+		this.coordinateLabel.setText(value);
 	}
 
 }

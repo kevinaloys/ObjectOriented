@@ -20,10 +20,10 @@ public MainBottomPanel()
 	    e.printStackTrace();
 	}
 	statusPanel = new StatusPanel();
-	
 	leftPanel = new BottomLeft(statusPanel);
+	leftPanel.setPreferredSize(new Dimension(300, 320));
 	rightPanel = new BottomRight(statusPanel);
-	rightPanel.setPreferredSize(new Dimension(200,200));
+	rightPanel.setPreferredSize(new Dimension(80,150));
 	
 	setLayout();
 }

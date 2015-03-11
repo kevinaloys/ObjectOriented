@@ -6,6 +6,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import com.campuscafe.implementation.Driver;
+
 public class Diet extends JPanel implements ActionListener
 {
 	private JButton addDietBoundary;
@@ -15,13 +17,12 @@ public class Diet extends JPanel implements ActionListener
 	private JButton addSpecialNeed;
 	private JTextField specialNeeds;
 	private String userID;
-	private StatusPanel panel;
 	
-	public Diet(String userid, StatusPanel panelStatus)
+	public Diet(String userid)
 	{
 		this.userID = userid;
-		this.panel = panelStatus;
-		view = new ViewDiet(userid, panelStatus);
+
+		view = new ViewDiet(userid);
 		
 		 addDietBoundary =new JButton("Add Boundary conditions (cal)");
 		 addDietBoundary.setActionCommand("boundary");
@@ -54,24 +55,27 @@ public class Diet extends JPanel implements ActionListener
 		add(Box.createRigidArea(new Dimension(0,20)));
 		add(specialNeeds);
 	}
-	/***/
+	/** Returns the Viewdiet object created in the constructor of Diet*/
 	public ViewDiet getViewDiet()
 	{
 		return this.view;
 	}
-	/**
+	/** Actions on the diet boundary and calorie special conditions
 	@Override */
 	public void actionPerformed(ActionEvent event) 
 	{
 		String command = event.getActionCommand();
-		
-		if(command.equals("boundary"))
-		{
-			
+		Driver driver = new Driver();
+		if(command.equals("boundary"))	
+		{	
+			int userid = Integer.parseInt(this.userID);
+			String boundary = this.diet.getText();
+			// String value of the add diet requirements that needs to be added into the database
 		}
 		if(command.equals("spNeeds"))
 		{
-			//send to db
+			int userid = Integer.parseInt(this.userID);
+			String specialneeds = this.specialNeeds.getText(); // String value of special requirements to get the special needs and put it into the database.
 		}
 		
 	}

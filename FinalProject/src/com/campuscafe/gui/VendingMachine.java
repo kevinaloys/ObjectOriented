@@ -25,15 +25,15 @@ public class VendingMachine extends JPanel implements ActionListener
 		this.panel = panelStatus;
 		
 		totalLabel = new JLabel("  Total ");
-		totalLabel.setFont(new Font("Calibri",Font.BOLD, 25));
+		totalLabel.setFont(new Font("Calibri",Font.BOLD, 19));
 		totalLabel.setHorizontalAlignment(JLabel.LEFT);
 		
 		purchase = new JButton("  Purchase ");
-		purchase.setFont(new Font("Calibri",Font.BOLD, 20));
+		purchase.setFont(new Font("Calibri",Font.BOLD, 19));
 		purchase.setHorizontalAlignment(JLabel.CENTER);
 		
 		clear = new JButton();
-		clear.setText("Clear"); clear.setFont(new Font("Calibri",Font.BOLD, 20));
+		clear.setText("Clear"); clear.setFont(new Font("Calibri",Font.BOLD, 19));
 		
 		setItemGUI();	
 		setButtonProperties();
@@ -60,7 +60,7 @@ public class VendingMachine extends JPanel implements ActionListener
 	/***/
 	public void setItemGUI()
 	{
-		Font font = new Font("Calibri",Font.BOLD,20);
+		Font font = new Font("Calibri",Font.BOLD,15);
 		
 		item1 = new JLabel("Snickers ($2) 100cal"); 	item1.setFont(font); 	item1.setHorizontalAlignment(JLabel.CENTER);
 		item2 = new JLabel("Energy Bar ($6) 40cal"); 	item2.setFont(font);	item2.setHorizontalAlignment(JLabel.CENTER);
@@ -193,10 +193,13 @@ public class VendingMachine extends JPanel implements ActionListener
 			{	this.total = this.total-4;		this.calories = this.calories-80;			}
 		}
 			
-		String totalString = " Total : " + String.valueOf(total) + "$ " + String.valueOf(calories) + " cal";
+		String totalString =  " Total :$ " +String.valueOf(total) + " " + String.valueOf(this.calories) + " cal" ;
+		
 		if(this.total==0 && this.calories==0)
 			totalString = "  Total ";
-		this.totalLabel.setText(totalString);			
+			
+		this.totalLabel.setText(totalString);		
+	
 	}
 	/**
 	 * Clears all the selected checkboxes in the VendingMachine */

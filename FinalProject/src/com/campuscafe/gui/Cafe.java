@@ -12,8 +12,10 @@ public class Cafe extends JPanel implements ActionListener
 {
 private JLabel item1, item2, item3, item4, item5, item6;
 private JCheckBox selectItem1, selectItem2, selectItem3, selectItem4, selectItem5, selectItem6;
+private JCheckBox toGo, eatIn;
 private JButton clear;
 private JLabel totalLabel;
+private JLabel calLabel;
 private JButton purchase;
 
 private String userID;
@@ -32,10 +34,15 @@ public Cafe(String userid, StatusPanel panelStatus)
 	this.selectItem1 = new JCheckBox();	this.selectItem2 = new JCheckBox();
 	this.selectItem3 = new JCheckBox();	this.selectItem4 = new JCheckBox();
 	this.selectItem5 = new JCheckBox();	this.selectItem6 = new JCheckBox();
+	this.toGo = new JCheckBox("To Go");		this.eatIn = new JCheckBox("Eat In");
 	
 	this.clear = new JButton(" Clear");
+	this.clear.setPreferredSize(new Dimension(50,40));
 	this.totalLabel = new JLabel(" Total");
 	this.purchase = new JButton("Purchase");
+	this.calLabel = new JLabel("");
+	this.calLabel.setFont(new Font("Calibri",Font.BOLD, 19));
+	this.calLabel.setHorizontalAlignment(JLabel.RIGHT);
 	
 	
 	setLayout();
@@ -53,20 +60,23 @@ public void setLayout()
 	JLabel label5 = new JLabel("10$ 70cal");		label5.setFont(font);
 	JLabel label6 = new JLabel("11$ 90cal");		label6.setFont(font);
 	
-	this.clear.setFont(new Font("Calibri", Font.BOLD, 22));
-	this.totalLabel.setFont(new Font("Calibri", Font.BOLD, 22));
-	this.purchase.setFont(new Font("Calibri",Font.BOLD, 22));
+	this.clear.setFont(new Font("Calibri", Font.BOLD, 19));
+	this.totalLabel.setFont(new Font("Calibri", Font.BOLD, 19));
+	this.purchase.setFont(new Font("Calibri",Font.BOLD, 19));
 	
-	this.setLayout(new GridLayout(7,3));
-	add(item1);		add(label1); 		add(selectItem1);
-	add(item2);		add(label2); 		add(selectItem2);
-	add(item3);		add(label3); 		add(selectItem3);
-	add(item4);		add(label4); 		add(selectItem4);
-	add(item5);		add(label5); 		add(selectItem5);
-	add(item6);		add(label6); 		add(selectItem6);
-	add(clear);		add(totalLabel); 	add(purchase);
+	this.toGo.setFont(font);
+	this.eatIn.setFont(font);
+	
+	this.setLayout(new GridLayout(7,4));
+	add(item1);		add(label1); 		add(selectItem1);		add(new JLabel("	"));
+	add(item2);		add(label2); 		add(selectItem2);		add(toGo);
+	add(item3);		add(label3); 		add(selectItem3);		add(new JLabel("	"));
+	add(item4);		add(label4); 		add(selectItem4);		add(new JLabel("	"));
+	add(item5);		add(label5); 		add(selectItem5);		add(eatIn);
+	add(item6);		add(label6); 		add(selectItem6);		add(new JLabel("	"));
+	add(clear);		add(totalLabel); 	add(calLabel);		add(purchase);
 }
-/***/
+/***/	
 public void setButtonProperties()
 {
 	this.selectItem1.addActionListener(this);	this.selectItem2.addActionListener(this);
@@ -76,6 +86,8 @@ public void setButtonProperties()
 	this.selectItem1.setActionCommand("Burger");		this.selectItem2.setActionCommand("Tea");
 	this.selectItem3.setActionCommand("Coffee");		this.selectItem4.setActionCommand("Brownie");
 	this.selectItem5.setActionCommand("Noodles");		this.selectItem6.setActionCommand("Pasta");
+	this.toGo.setActionCommand("togo");					this.eatIn.setActionCommand("eatin");
+	this.toGo.addActionListener(this);					this.eatIn.addActionListener(this);
 	
 	this.clear.addActionListener(this);			this.clear.setActionCommand("clear");
 	this.purchase.addActionListener(this);		this.purchase.setActionCommand("purchase");
@@ -92,12 +104,23 @@ public void actionPerformed(ActionEvent event)
 	
 	if(command.equals("clear"))
 	{
+		this.total = 0;
+		this.calories=0;
+		this.time =0;
 		this.clear();
+	}
+	if(command.equals("togo"))
+	{
+		this.eatIn.setSelected(false);
+	}
+	if(command.equals("eatin"))
+	{
+		this.toGo.setSelected(false);
 	}
 	if(command.equals("purchase"))
 	{
 		String output =  "User ID: " + this.userID + "\nTotal: " + this.total +
-						 "\nTime : " + this.time;
+						 "\nWill be ready in : " + this.time;
 		this.panel.setDisplay(output);
 		   // get funds from db
 			// balance remaining
@@ -145,26 +168,31 @@ public void actionPerformed(ActionEvent event)
 		{	this.total = this.total-11;	this.calories = this.calories-90;	this.time=this.time-15;}
 	}
 	
-	String totalString = " Total : " + String.valueOf(total) + "$ " + String.valueOf(calories) + " cal";
-	if(this.total==0 && this.calories==0)
+	
+	String totalString = "Total: $ " + String.valueOf(total) ;
+	String caltotal = String.valueOf(calories) + " cal";
+	
+	if(this.total==0 )
 		totalString = "  Total ";
+	if(this.calories==0)
+		caltotal = "";
 	
 	if(this.time > 0)
 	{
 		totalString = totalString + "  " + this.time + "mins";
 	}
 	this.totalLabel.setText(totalString);	
+	this.calLabel.setText(caltotal);
 }
-/*
+/**
 * Clears all the selected checkboxes in the Cafe*/ 
 public void clear()
 {
 	this.selectItem1.setSelected(false);	this.selectItem2.setSelected(false);
 	this.selectItem3.setSelected(false);	this.selectItem4.setSelected(false);
 	this.selectItem5.setSelected(false);	this.selectItem6.setSelected(false);
+	this.toGo.setSelected(false);			this.eatIn.setSelected(false);
 	
-	this.totalLabel.setText(" Total");
-	this.panel.setDisplay(" ");
 }
 
 }

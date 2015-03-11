@@ -35,7 +35,7 @@ public class DisplayBottomMenu extends JPanel
 	 //Cards within the right layout.
 	 funds = new Funds(userID,statusPanel);
 	 viewFunds = funds.getViewFunds();
-	 diet = new Diet(userID,statusPanel);
+	 diet = new Diet(userID);
 	 viewDiet = diet.getViewDiet();
 	 
 	 //cardlayout created

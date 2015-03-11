@@ -6,19 +6,19 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import com.campuscafe.implementation.FundsManager;
+
 public class ViewFunds extends JPanel implements ActionListener
 {
 	private JButton view;
 	private JLabel funds;
 	
 	private String userID;
-	private StatusPanel status;
 	
 	/***/
-	public ViewFunds(String userid, StatusPanel panelStatus)
+	public ViewFunds(String userid)
 	{
 		this.userID = userid;
-		this.status = panelStatus;
 		
 		Font font = new Font("Calibri" , Font.BOLD, 22);
 		
@@ -31,7 +31,7 @@ public class ViewFunds extends JPanel implements ActionListener
 		funds.setFont(font);
 		funds.setPreferredSize(new Dimension(60,60));
 		
-		view.setActionCommand("add");
+		view.setActionCommand("view");
 		view.addActionListener(this);
 		setLayout();
 	}
@@ -40,15 +40,27 @@ public class ViewFunds extends JPanel implements ActionListener
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(Box.createRigidArea(new Dimension(0,20)));
 		add(view);
-		add(Box.createRigidArea(new Dimension(0,70)));
+		add(Box.createRigidArea(new Dimension(0,10)));
 		add(funds);
-		add(Box.createRigidArea(new Dimension(0,70)));
+		add(Box.createRigidArea(new Dimension(0,10)));
 	}
 	/**
 	@Override */
 	public void actionPerformed(ActionEvent e) 
 	{
 		String command = e.getActionCommand();
+		
+		if(command.equals("view"))
+		{
+			//this.userID;
+			//1. get current funds available from db for this userid
+			
+			int userid = Integer.parseInt(this.userID);
+			FundsManager fund = new FundsManager();
+			int balancefunds = fund.getFunds(userid);
+			this.funds.setText("5");
+			
+		}
 	}
 
 }

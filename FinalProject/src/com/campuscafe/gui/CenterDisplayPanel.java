@@ -19,7 +19,7 @@ public class CenterDisplayPanel extends JPanel
 		this.cards = new CardLayout();
 		this.mapPanel = new MapPanel();
 		
-		this.mapPanel.setPreferredSize(new Dimension(800,500));
+		this.mapPanel.setPreferredSize(new Dimension(400,450));
 		//this.graphPanel = new Graph();
 		
 		setCardLayout();		
