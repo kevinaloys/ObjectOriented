@@ -68,9 +68,17 @@ public class Diet extends JPanel implements ActionListener
 		Driver driver = new Driver();
 		if(command.equals("boundary"))	
 		{	
+			int caloriesperday;
 			int userid = Integer.parseInt(this.userID);
 			String boundary = this.diet.getText();
-			int caloriesperday = Integer.parseInt(boundary);
+			try
+			{
+				caloriesperday = Integer.parseInt(boundary);
+			}
+			catch(NumberFormatException e)
+			{
+				caloriesperday = 0;
+			}
 			driver.addCaloriePerDay(userid, caloriesperday);
 			// String value of the add diet requirements that needs to be added into the database
 		}

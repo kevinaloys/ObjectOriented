@@ -199,6 +199,15 @@ public class Driver {
 		return calorieperday;
 	}
 	
+	public int getConsumedCalories(int userid)
+	{
+		col = db.getCollection("user");
+		BasicDBObject getcurrent = new BasicDBObject("id", userid);
+		DBObject obj = col.findOne(getcurrent);
+		Double consumedCalories = (Double)((DBObject)obj.get("calories")).get(currentMonth);
+		int calories = consumedCalories.intValue();
+		return calories;
+	}
 	/**
 	 * Gets the the Expiry Year of the Campus User Card.
 	 * @param userid Unique ID of the Campus Cafe User.

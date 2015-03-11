@@ -89,6 +89,10 @@ public class ViewDiet extends JPanel implements ActionListener
 		//2. get cal consumed this current month;
 		if(command.equals("calories"))
 		{
+			int userid = Integer.parseInt(this.userID);
+			int consumedcalories = driver.getConsumedCalories(userid);
+			String consumedcal = Integer.toString(consumedcalories);
+			calories.setText(consumedcal);
 			
 		}
 	}
