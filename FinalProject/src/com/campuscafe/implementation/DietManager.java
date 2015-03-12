@@ -1,5 +1,10 @@
 package com.campuscafe.implementation;
 
+/**
+ * 
+ * @author Kevin Aloysius
+ *
+ */
 public class DietManager {
 	private Driver driver = new Driver();
 	

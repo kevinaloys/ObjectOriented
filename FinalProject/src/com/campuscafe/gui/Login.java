@@ -102,7 +102,10 @@ private JPanel panel;
 		String command = event.getActionCommand();
 		
 		if(command.equals("okay"))
-		{
+		{	
+			/**
+			 * @author Kevin Aloysius
+			 */
 			this.userID = this.userIdField.getText();
 			this.expiryDate = this.expiryDateField.getText();
 			
@@ -134,7 +137,7 @@ private JPanel panel;
 	            	application.setVisible(true);	            	
 	            }
 	        });	
-		  } // end this.validate
+		  } 
 		}
 	}
 }

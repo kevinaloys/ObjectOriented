@@ -1,4 +1,10 @@
 package com.campuscafe.implementation;
+
+/**
+ * 
+ * @author kevin
+ *
+ */
 public class CampusCardUser
 {
 	private String cardUserName;

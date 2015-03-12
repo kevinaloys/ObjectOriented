@@ -54,9 +54,9 @@ public class ViewFunds extends JPanel implements ActionListener
 		
 		if(command.equals("view"))
 		{
-			//this.userID;
-			//1. get current funds available from db for this userid
-			
+			/**
+			 * @author Kevin Aloysius
+			 */
 			int userid = Integer.parseInt(this.userID);
 			FundsManager fund = new FundsManager();
 			int balancefunds = fund.getFunds(userid);

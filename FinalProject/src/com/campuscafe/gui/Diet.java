@@ -8,6 +8,7 @@ import javax.swing.border.*;
 
 import com.campuscafe.implementation.Driver;
 /**
+ * @author Kevin Aloysius
  * @author Varada*/
 public class Diet extends JPanel implements ActionListener
 {
@@ -72,6 +73,9 @@ public class Diet extends JPanel implements ActionListener
 	@Override */
 	public void actionPerformed(ActionEvent event) 
 	{
+		/**
+		 * @author Kevin Aloysius
+		 */
 		String command = event.getActionCommand();
 		Driver driver = new Driver();
 		if(command.equals("boundary"))	
@@ -94,7 +98,7 @@ public class Diet extends JPanel implements ActionListener
 		{
 			int userid = Integer.parseInt(this.userID);
 			String specialneeds = this.specialNeeds.getText();
-		// String value of special requirements to get the special needs and put it into the database.
+			driver.setSpecialNeed(userid, specialneeds);
 		}
 		
 	}

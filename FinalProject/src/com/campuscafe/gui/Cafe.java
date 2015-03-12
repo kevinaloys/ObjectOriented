@@ -158,6 +158,7 @@ public void actionPerformed(ActionEvent event)
 				balanceRemaining = driver.getFunds(userid);
 				output = output + balanceRemaining;
 				this.panel.setDisplay(output);
+				sms.send(output);
 			}
 		}
 		if(result == true)
@@ -168,6 +169,7 @@ public void actionPerformed(ActionEvent event)
 			balanceRemaining = driver.getFunds(userid);
 			output = output + balanceRemaining;
 			this.panel.setDisplay(output);
+			sms.send(output);
 		}					
 		
 	}

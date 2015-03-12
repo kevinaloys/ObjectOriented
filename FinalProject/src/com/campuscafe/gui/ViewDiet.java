@@ -2,6 +2,7 @@ package com.campuscafe.gui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -36,6 +37,7 @@ public class ViewDiet extends JPanel implements ActionListener
 		boundary = new JLabel();
 		boundary.setFont(font);
 		boundary.setPreferredSize(new Dimension(60,60));
+		boundary.setAlignmentX(CENTER_ALIGNMENT);
 		boundary.setHorizontalAlignment(JLabel.CENTER);
 		
 		viewCalories = new JButton("View Calories consumed");
@@ -48,6 +50,7 @@ public class ViewDiet extends JPanel implements ActionListener
 		calories = new JLabel();
 		calories.setFont(font);
 		calories.setPreferredSize(new Dimension(60,60));
+		calories.setAlignmentX(CENTER_ALIGNMENT);
 		calories.setHorizontalAlignment(JLabel.CENTER);
 		
 		viewSpecialNeeds = new JButton("View special conditions");
@@ -57,7 +60,7 @@ public class ViewDiet extends JPanel implements ActionListener
 		viewSpecialNeeds.setAlignmentX(CENTER_ALIGNMENT);
 		viewSpecialNeeds.setPreferredSize(new Dimension(70,80));
 		
-		specialNeeds = new JLabel( "pull diet requirements / needs");
+		specialNeeds = new JLabel();
 		specialNeeds.setFont(font);
 		specialNeeds.setPreferredSize(new Dimension(60,60));
 		specialNeeds.setHorizontalAlignment(JLabel.CENTER);
@@ -86,9 +89,12 @@ public class ViewDiet extends JPanel implements ActionListener
 	@Override */
 	public void actionPerformed(ActionEvent event) 
 	{
+		/**
+		 * @author Kevin Aloysius
+		 */
 		String command = event.getActionCommand();
 		Driver driver = new Driver();
-		//this.userid
+		
 		if(command.equals("boundary"))
 		{
 			try
@@ -104,9 +110,7 @@ public class ViewDiet extends JPanel implements ActionListener
 			
 			
 		}
-		//1. view boundary -> get db value using id for cal/day
-		
-		//2. get cal consumed this current month;
+
 		if(command.equals("calories"))
 		{
 			int userid = Integer.parseInt(this.userID);
@@ -120,6 +124,15 @@ public class ViewDiet extends JPanel implements ActionListener
 		{
 			//pull special needs from db
 			//display to this.specialNeeds
+			String output = "";
+			ArrayList needs;
+			needs = driver.getSpecialNeeds(1);
+			for(int i=0; i< needs.size();i++)
+			{
+				output = output + "|" + needs.get(i);
+			}
+			output = output + "|";
+			specialNeeds.setText(output);
 		}
 		
 	}

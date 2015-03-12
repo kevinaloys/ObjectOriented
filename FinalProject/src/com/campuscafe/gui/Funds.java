@@ -63,6 +63,9 @@ public class Funds extends JPanel implements ActionListener
 	@Override */
 	public void actionPerformed(ActionEvent event) 
 	{
+		/**
+		 * @author Kevin Aloysius
+		 */
 		String command = event.getActionCommand();
 		
 		if(command.equals("add"))

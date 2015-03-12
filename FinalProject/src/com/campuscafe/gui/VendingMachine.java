@@ -122,7 +122,7 @@ public class VendingMachine extends JPanel implements ActionListener
 	public void actionPerformed(ActionEvent event) 
 	{
 		String command = event.getActionCommand();
-		int balanceRemaining = 0;
+		int balanceRemaining;
 		
 		if(command.equals("clear"))
 		{
@@ -134,6 +134,10 @@ public class VendingMachine extends JPanel implements ActionListener
 								 "\nCalories :" + this.calories + "cal" +
 								 "\nBalance Remaining $";
 				
+				
+				/**
+				 * @author Kevin Aloysius
+				 */
 				SendSMS sms = new SendSMS();
 				
 				FundsManager funds = new FundsManager();
@@ -142,6 +146,7 @@ public class VendingMachine extends JPanel implements ActionListener
 				int calories = this.calories;
 				
 				boolean result = diet.incCalories(userid, calories, "");
+				Driver driver = new Driver();
 				System.out.println(result);
 				if(result == false)
 				{
@@ -160,8 +165,10 @@ public class VendingMachine extends JPanel implements ActionListener
 						int totalamount = this.total;
 						funds.purchase(userid, totalamount);
 						diet.incCalories(userid, calories, "yes");
+						balanceRemaining = driver.getFunds(userid);
 						output = output + balanceRemaining;
 						this.panel.setDisplay(output);
+						sms.send(output);
 						
 					}
 				}
@@ -170,9 +177,10 @@ public class VendingMachine extends JPanel implements ActionListener
 					int totalamount = this.total;
 					funds.purchase(userid, totalamount);
 					diet.incCalories(userid, calories, "yes");
+					balanceRemaining = driver.getFunds(userid);
 					output = output + balanceRemaining;
 					this.panel.setDisplay(output);
-					
+					sms.send(output);
 				}								
 			
 		}

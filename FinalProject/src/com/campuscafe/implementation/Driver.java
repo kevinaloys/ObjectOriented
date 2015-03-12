@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
@@ -168,6 +170,18 @@ public class Driver {
 		col.update(query, dbobject);
 		return true;
 	}
+	
+	public ArrayList getSpecialNeeds(int userid)
+	{
+
+		col = db.getCollection("user");
+		BasicDBObject getcurrent = new BasicDBObject("id", userid);
+		DBObject obj = col.findOne(getcurrent);
+		
+		ArrayList needs = (ArrayList)(obj.get("diet"));
+		return needs;
+	}
+	
 	
 	/**
 	 * Sets the minimum caloric intake per day
