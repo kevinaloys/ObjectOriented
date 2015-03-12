@@ -15,9 +15,9 @@ public class DietManager {
 		if(useroption == "")
 		{
 			int consumedcalories = driver.getConsumedCalories(userid);
-			int calorieperday = Integer.parseInt(driver.getCaloriePerDay(userid));
+			double calorieperday = Double.parseDouble(driver.getCaloriePerDay(userid));
 			
-			if(calories + consumedcalories > calorieperday)
+			if(calories + (consumedcalories) > calorieperday)
 			{
 				result = false;
 			}

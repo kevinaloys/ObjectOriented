@@ -146,6 +146,7 @@ public class VendingMachine extends JPanel implements ActionListener
 				int calories = this.calories;
 				
 				boolean result = diet.incCalories(userid, calories, "");
+				
 				Driver driver = new Driver();
 				System.out.println(result);
 				if(result == false)
@@ -179,6 +180,7 @@ public class VendingMachine extends JPanel implements ActionListener
 					diet.incCalories(userid, calories, "yes");
 					balanceRemaining = driver.getFunds(userid);
 					output = output + balanceRemaining;
+					
 					this.panel.setDisplay(output);
 					sms.send(output);
 				}								

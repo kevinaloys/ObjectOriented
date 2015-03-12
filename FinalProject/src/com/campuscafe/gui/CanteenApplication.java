@@ -60,7 +60,7 @@ public class CanteenApplication extends JFrame
 	public static void main(String[] args) 
 	{
     	Login login = new Login();
-    	login.setSize(new Dimension(1500,900));
+    	login.setSize(new Dimension(500,500));
     	login.setVisible(true);
 	}		
 			

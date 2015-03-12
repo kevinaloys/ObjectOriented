@@ -219,6 +219,7 @@ public class Driver {
 		BasicDBObject getcurrent = new BasicDBObject("id", userid);
 		DBObject obj = col.findOne(getcurrent);
 		Double consumedCalories = (Double)((DBObject)obj.get("calories")).get(currentMonth);
+		consumedCalories = consumedCalories/30;
 		int calories = consumedCalories.intValue();
 		return calories;
 	}
