@@ -223,6 +223,35 @@ public class Driver {
 		return card;
 	}
 	
+	public boolean userExists(int userid)
+	{
+		boolean result  = false;
+		col = db.getCollection("user");
+		BasicDBObject getcurrent;
+		try
+		{
+			getcurrent = new BasicDBObject("id", userid);
+			DBObject obj = col.findOne(getcurrent);
+			if(obj.containsField("id"))
+			{
+				result =  true;
+			}
+			else
+			{
+				result = false;
+			}
+			
+		}
+		catch(NullPointerException e)
+		{
+			
+
+			
+		}
+		return result;
+		
+	}
+	
 	
 	
 	/**

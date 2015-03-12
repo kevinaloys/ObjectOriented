@@ -103,32 +103,26 @@ private JPanel panel;
 		
 		if(command.equals("okay"))
 		{
-			/*int userid = 0 , expiry = 0;
-			//validation of userid and date
-			try
-			{
-				userid = Integer.parseInt(this.userID);
-				expiry = Integer.parseInt(this.expiryDate);
-			}
-			catch(NumberFormatException e)
-			{
-				
-			}
+			this.userID = this.userIdField.getText();
+			this.expiryDate = this.expiryDateField.getText();
+			
+			int userid = Integer.parseInt(this.userID);
+			int expiry = Integer.parseInt(this.expiryDate);
 			
 			Driver driver = new Driver();
-			int getexpiry = driver.getCardExpiry(userid);
+			boolean userExists = driver.userExists(userid);
 			
-			//checks expiry date on the card
-			if(expiry <= getexpiry)
+			int userexpiry = driver.getCardExpiry(userid);
+			
+			if((expiry <= userexpiry) && userExists)
 			{
 				this.validated = true;
 			}
 			else
 			{
 				this.validated = false;
-			}*/
+			}
 			
-			this.validated = true;
 			if(this.validated)
 			{
 			this.userID = this.userIdField.getText();
