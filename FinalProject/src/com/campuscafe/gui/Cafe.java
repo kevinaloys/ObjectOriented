@@ -8,10 +8,12 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import com.campuscafe.implementation.DietManager;
+import com.campuscafe.implementation.Driver;
 import com.campuscafe.implementation.FundsManager;
 import com.campuscafe.implementation.SendSMS;
 
-
+/**
+ * @author Varada*/
 public class Cafe extends JPanel implements ActionListener
 {
 private JLabel item1, item2, item3, item4, item5, item6;
@@ -39,6 +41,7 @@ public Cafe(String userid, StatusPanel panelStatus)
 	this.selectItem3 = new JCheckBox();	this.selectItem4 = new JCheckBox();
 	this.selectItem5 = new JCheckBox();	this.selectItem6 = new JCheckBox();
 	this.toGo = new JCheckBox("To Go");		this.eatIn = new JCheckBox("Eat In");
+	this.eatIn.setSelected(true);
 	
 	this.clear = new JButton(" Clear");
 	this.clear.setPreferredSize(new Dimension(50,40));
@@ -55,14 +58,14 @@ public Cafe(String userid, StatusPanel panelStatus)
 /***/
 public void setLayout()
 {
-	Font font = new Font("Calibri", Font.BOLD, 20);
+	Font font = new Font("Calibri", Font.BOLD, 18);
 	
-	JLabel label1 = new JLabel("12$ 60cal");		label1.setFont(font);
-	JLabel label2 = new JLabel("2$ ");				label2.setFont(font);
-	JLabel label3 = new JLabel("3$ ");				label3.setFont(font);
-	JLabel label4 = new JLabel("6$ 80cal");			label4.setFont(font);
-	JLabel label5 = new JLabel("10$ 70cal");		label5.setFont(font);
-	JLabel label6 = new JLabel("11$ 90cal");		label6.setFont(font);
+	JLabel label1 = new JLabel("$12 60cal");		label1.setFont(font);
+	JLabel label2 = new JLabel("$2 ");				label2.setFont(font);
+	JLabel label3 = new JLabel("$3 ");				label3.setFont(font);
+	JLabel label4 = new JLabel("$6 80cal");			label4.setFont(font);
+	JLabel label5 = new JLabel("$10 70cal");		label5.setFont(font);
+	JLabel label6 = new JLabel("$11 90cal");		label6.setFont(font);
 	
 	this.clear.setFont(new Font("Calibri", Font.BOLD, 19));
 	this.totalLabel.setFont(new Font("Calibri", Font.BOLD, 19));
@@ -105,12 +108,10 @@ public void setButtonProperties()
 public void actionPerformed(ActionEvent event) 
 {
 	String command = event.getActionCommand();
+	int balanceRemaining = 0;
 	
 	if(command.equals("clear"))
 	{
-		this.total = 0;
-		this.calories=0;
-		this.time =0;
 		this.clear();
 	}
 	if(command.equals("togo"))
@@ -123,9 +124,10 @@ public void actionPerformed(ActionEvent event)
 	}
 	if(command.equals("purchase"))
 	{
-		String output =  "User ID: " + this.userID + "\nTotal: " + this.total +
-						 "\nWill be ready in : " + this.time;
-		this.panel.setDisplay(output);
+		String output =  "User ID: " + this.userID + "\nTotal: $" + this.total + 
+						 "\nCalories : " + this.calories + " cal" +
+						 "\nWill be ready in : " + this.time + " mins" + 
+						 "\nBalance Remaining : $" ;
 		  
 		SendSMS sms = new SendSMS();
 		
@@ -135,7 +137,7 @@ public void actionPerformed(ActionEvent event)
 		int calories = this.calories;
 		
 		boolean result = diet.incCalories(userid, calories, "");
-		System.out.println(result);
+		Driver driver = new Driver();
 		if(result == false)
 		{
 			Object[] options = {"Yes Please","No"};
@@ -153,7 +155,9 @@ public void actionPerformed(ActionEvent event)
 				int totalamount = this.total;
 				funds.purchase(userid, totalamount);
 				diet.incCalories(userid, calories, "yes");
-				
+				balanceRemaining = driver.getFunds(userid);
+				output = output + balanceRemaining;
+				this.panel.setDisplay(output);
 			}
 		}
 		if(result == true)
@@ -161,7 +165,9 @@ public void actionPerformed(ActionEvent event)
 			int totalamount = this.total;
 			funds.purchase(userid, totalamount);
 			diet.incCalories(userid, calories, "yes");
-			
+			balanceRemaining = driver.getFunds(userid);
+			output = output + balanceRemaining;
+			this.panel.setDisplay(output);
 		}					
 		
 	}
@@ -219,7 +225,7 @@ public void actionPerformed(ActionEvent event)
 	
 	if(this.time > 0)
 	{
-		totalString = totalString + "  " + this.time + "mins";
+		caltotal = caltotal + "  " + this.time + "mins";
 	}
 	this.totalLabel.setText(totalString);	
 	this.calLabel.setText(caltotal);
@@ -233,6 +239,12 @@ public void clear()
 	this.selectItem5.setSelected(false);	this.selectItem6.setSelected(false);
 	this.toGo.setSelected(false);			this.eatIn.setSelected(false);
 	
+	this.total = 0;
+	this.calories=0;
+	this.time =0;
+	this.totalLabel.setText(" ");
+	this.calLabel.setText(" ");
+	this.panel.setDisplay(" ");
 }
 
 }

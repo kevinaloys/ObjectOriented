@@ -6,7 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
+/**
+ * @author Varada*/
 public class GraphType extends JPanel implements ActionListener
 {
 	private JRadioButton diet ;

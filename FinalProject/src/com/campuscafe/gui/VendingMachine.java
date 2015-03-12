@@ -65,11 +65,11 @@ public class VendingMachine extends JPanel implements ActionListener
 	/***/
 	public void setItemGUI()
 	{
-		Font font = new Font("Calibri",Font.BOLD,15);
+		Font font = new Font("Calibri",Font.BOLD,17);
 		
 		item1 = new JLabel("Snickers ($2) 100cal"); 	item1.setFont(font); 	item1.setHorizontalAlignment(JLabel.CENTER);
 		item2 = new JLabel("Energy Bar ($6) 40cal"); 	item2.setFont(font);	item2.setHorizontalAlignment(JLabel.CENTER);
-		item3 = new JLabel("Chocolate Raisins ($4) 60cal");   item3.setFont(font);	
+		item3 = new JLabel("Choco Raisins ($4) 60cal");   item3.setFont(font);	
 		item3.setHorizontalAlignment(JLabel.CENTER);
 		
 		one = new JCheckBox(""); 					
@@ -90,9 +90,9 @@ public class VendingMachine extends JPanel implements ActionListener
 		six = new JCheckBox(""); 					six.setFont(font);
 		six.setHorizontalAlignment(JLabel.CENTER);
 		
-		item7 = new JLabel("Sandwich (12$) 30cal"); 		item7.setFont(font);  item7.setHorizontalAlignment(JLabel.CENTER);
-		item8 = new JLabel("Baked Wafers (7$) 40cal"); 	item8.setFont(font);  item8.setHorizontalAlignment(JLabel.CENTER);
-		item9 = new JLabel("Popcorn (4$)  80cal"); 			item9.setFont(font);  item9.setHorizontalAlignment(JLabel.CENTER);
+		item7 = new JLabel("Sandwich ($12) 30cal"); 		item7.setFont(font);  item7.setHorizontalAlignment(JLabel.CENTER);
+		item8 = new JLabel("Wafers ($7) 40cal"); 	item8.setFont(font);  item8.setHorizontalAlignment(JLabel.CENTER);
+		item9 = new JLabel("Popcorn ($4)  80cal"); 			item9.setFont(font);  item9.setHorizontalAlignment(JLabel.CENTER);
 		
 		seven = new JCheckBox(""); 					seven.setFont(font);
 		seven.setHorizontalAlignment(JLabel.CENTER);
@@ -122,6 +122,7 @@ public class VendingMachine extends JPanel implements ActionListener
 	public void actionPerformed(ActionEvent event) 
 	{
 		String command = event.getActionCommand();
+		int balanceRemaining = 0;
 		
 		if(command.equals("clear"))
 		{
@@ -129,9 +130,9 @@ public class VendingMachine extends JPanel implements ActionListener
 		}
 		if(command.equals("purchase"))
 		{
-				String output =  "User ID: " + this.userID + "\nTotal: " + this.total + "$" +
-								 "\nCalories :" + this.calories + "cal";
-				this.panel.setDisplay(output);
+				String output =  "User ID: " + this.userID + "\nTotal: " + "$"  + this.total +
+								 "\nCalories :" + this.calories + "cal" +
+								 "\nBalance Remaining $";
 				
 				SendSMS sms = new SendSMS();
 				
@@ -159,6 +160,8 @@ public class VendingMachine extends JPanel implements ActionListener
 						int totalamount = this.total;
 						funds.purchase(userid, totalamount);
 						diet.incCalories(userid, calories, "yes");
+						output = output + balanceRemaining;
+						this.panel.setDisplay(output);
 						
 					}
 				}
@@ -167,6 +170,8 @@ public class VendingMachine extends JPanel implements ActionListener
 					int totalamount = this.total;
 					funds.purchase(userid, totalamount);
 					diet.incCalories(userid, calories, "yes");
+					output = output + balanceRemaining;
+					this.panel.setDisplay(output);
 					
 				}								
 			

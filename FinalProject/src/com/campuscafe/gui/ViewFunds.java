@@ -29,6 +29,8 @@ public class ViewFunds extends JPanel implements ActionListener
 		
 		funds = new JLabel();
 		funds.setFont(font);
+		funds.setAlignmentX(CENTER_ALIGNMENT);
+		funds.setHorizontalAlignment(JLabel.CENTER);
 		funds.setPreferredSize(new Dimension(60,60));
 		
 		view.setActionCommand("view");

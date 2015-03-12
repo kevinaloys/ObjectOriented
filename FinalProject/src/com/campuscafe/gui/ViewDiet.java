@@ -14,6 +14,8 @@ public class ViewDiet extends JPanel implements ActionListener
 	private JLabel boundary;
 	private JButton viewCalories;
 	private JLabel calories;
+	private JButton viewSpecialNeeds;
+	private JLabel specialNeeds;
 	
 	private String userID;
 	
@@ -22,19 +24,19 @@ public class ViewDiet extends JPanel implements ActionListener
 	{
 		this.userID = userid;
 		
-		Font font = new Font("Calibri" , Font.BOLD, 20);
+		Font font = new Font("Calibri" , Font.BOLD, 18);
 		
 		viewBoundary = new JButton("View Boundary Cal/Day");
 		viewBoundary.setFont(font);
 		viewBoundary.setActionCommand("boundary");
 		viewBoundary.addActionListener(this);
 		viewBoundary.setPreferredSize(new Dimension(70,80));
-		viewBoundary.setAlignmentX(CENTER_ALIGNMENT);
-		
+		viewBoundary.setAlignmentX(CENTER_ALIGNMENT);		
 		
 		boundary = new JLabel();
 		boundary.setFont(font);
 		boundary.setPreferredSize(new Dimension(60,60));
+		boundary.setHorizontalAlignment(JLabel.CENTER);
 		
 		viewCalories = new JButton("View Calories consumed");
 		viewCalories.setFont(font);
@@ -46,6 +48,20 @@ public class ViewDiet extends JPanel implements ActionListener
 		calories = new JLabel();
 		calories.setFont(font);
 		calories.setPreferredSize(new Dimension(60,60));
+		calories.setHorizontalAlignment(JLabel.CENTER);
+		
+		viewSpecialNeeds = new JButton("View special conditions");
+		viewSpecialNeeds.setActionCommand("needs");
+		viewSpecialNeeds.setFont(font);
+		viewSpecialNeeds.addActionListener(this);
+		viewSpecialNeeds.setAlignmentX(CENTER_ALIGNMENT);
+		viewSpecialNeeds.setPreferredSize(new Dimension(70,80));
+		
+		specialNeeds = new JLabel( "pull diet requirements / needs");
+		specialNeeds.setFont(font);
+		specialNeeds.setPreferredSize(new Dimension(60,60));
+		specialNeeds.setHorizontalAlignment(JLabel.CENTER);
+		specialNeeds.setAlignmentX(CENTER_ALIGNMENT);
 		
 		setLayout();
 	}
@@ -53,14 +69,18 @@ public class ViewDiet extends JPanel implements ActionListener
 	public void setLayout()
 	{
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		add(Box.createRigidArea(new Dimension(0,20)));
+		add(Box.createRigidArea(new Dimension(0,10)));
 		add(viewBoundary);
-		add(Box.createRigidArea(new Dimension(0,40)));
+		add(Box.createRigidArea(new Dimension(0,10)));
 		add(boundary);
-		add(Box.createRigidArea(new Dimension(0,70)));
+		add(Box.createRigidArea(new Dimension(0,20)));
 		add(viewCalories);
-		add(Box.createRigidArea(new Dimension(0,40)));
+		add(Box.createRigidArea(new Dimension(0,20)));
 		add(calories);
+		add(Box.createRigidArea(new Dimension(0,20)));
+		add(viewSpecialNeeds);
+		add(Box.createRigidArea(new Dimension(0,10)));
+		add(specialNeeds);
 	}
 	/**
 	@Override */
@@ -95,6 +115,13 @@ public class ViewDiet extends JPanel implements ActionListener
 			calories.setText(consumedcal);
 			
 		}
+		
+		if(command.equals("needs"))
+		{
+			//pull special needs from db
+			//display to this.specialNeeds
+		}
+		
 	}
 
 }

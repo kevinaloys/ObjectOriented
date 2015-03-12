@@ -7,7 +7,8 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import com.campuscafe.implementation.Driver;
-
+/**
+ * @author Varada*/
 public class Diet extends JPanel implements ActionListener
 {
 	private JButton addDietBoundary;
@@ -28,17 +29,23 @@ public class Diet extends JPanel implements ActionListener
 		 addDietBoundary.setActionCommand("boundary");
 		 addDietBoundary.addActionListener(this);
 		 addDietBoundary.setFont(new Font("Calibri", Font.BOLD, 22));
+		 addDietBoundary.setAlignmentX(CENTER_ALIGNMENT);
 		 
 		 diet = new JTextField();
-		 diet.setPreferredSize(new Dimension(100,80));
+		 diet.setPreferredSize(new Dimension(70,80));
+		 diet.setHorizontalAlignment(JTextField.CENTER);
+		 diet.setAlignmentX(CENTER_ALIGNMENT);
 		
 		addSpecialNeed = new JButton("Add special needs");
 		addSpecialNeed.setActionCommand("spNeeds");
 		addSpecialNeed.addActionListener(this);
 		addSpecialNeed.setFont(new Font("Calibri", Font.BOLD, 22));
+		addSpecialNeed.setAlignmentX(CENTER_ALIGNMENT);
 		
 		specialNeeds = new JTextField();
-		specialNeeds.setPreferredSize(new Dimension(100,80));
+		specialNeeds.setPreferredSize(new Dimension(70,80));
+		specialNeeds.setAlignmentX(CENTER_ALIGNMENT);
+		specialNeeds.setHorizontalAlignment(JTextField.CENTER);
 		
 		setLayout();
 		
@@ -46,7 +53,7 @@ public class Diet extends JPanel implements ActionListener
 	public void setLayout()
 	{
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		add(Box.createRigidArea(new Dimension(0,20)));
+		add(Box.createRigidArea(new Dimension(0,40)));
 		add(addDietBoundary);
 		add(Box.createRigidArea(new Dimension(0,20)));
 		add(diet);
@@ -54,6 +61,7 @@ public class Diet extends JPanel implements ActionListener
 		add(addSpecialNeed);
 		add(Box.createRigidArea(new Dimension(0,20)));
 		add(specialNeeds);
+		add(Box.createRigidArea(new Dimension(0,40)));
 	}
 	/** Returns the Viewdiet object created in the constructor of Diet*/
 	public ViewDiet getViewDiet()

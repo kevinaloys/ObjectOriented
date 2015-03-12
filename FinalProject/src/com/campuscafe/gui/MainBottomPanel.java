@@ -3,7 +3,8 @@ package com.campuscafe.gui;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
+/**
+ * @author Varada*/
 public class MainBottomPanel extends JPanel
 {
 private BottomLeft leftPanel;
@@ -34,10 +35,15 @@ public void setLayout()
 	add(leftPanel);
 	add(rightPanel);
 }
-/***/
+/**Returns the left status panel that displays purchase/user account status*/
 public StatusPanel getStatusPane()
 {
 	return this.statusPanel;
+}
+/**Returns the bottom left panel*/
+public BottomLeft getBottomLeft()
+{
+	return this.leftPanel;
 }
 
 }

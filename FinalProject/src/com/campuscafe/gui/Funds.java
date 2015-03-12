@@ -6,7 +6,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import com.campuscafe.implementation.*;
-/***/
+/**
+ * @author Varada*/
 public class Funds extends JPanel implements ActionListener
 {
 	private JButton add;

@@ -8,29 +8,34 @@ import java.util.Date;
 import javax.swing.*;
 import javax.swing.border.*;
 
+/**
+ * @author Varada*/
 public class CenterDisplayPanel extends JPanel
 {
 	private MapPanel mapPanel;
-	//private Graph graphPanel;
-	private CardLayout cards;
+	//private CardLayout cards;
+	private MainBottomPanel bottom;
 	
-	public CenterDisplayPanel()
+	/**This class */
+	public CenterDisplayPanel(MainBottomPanel panel)
 	{
-		this.cards = new CardLayout();
-		this.mapPanel = new MapPanel();
+		//this.cards = new CardLayout();
+		this.mapPanel = new MapPanel(panel);
+		this.bottom = panel;
 		
-		this.mapPanel.setPreferredSize(new Dimension(400,450));
-		//this.graphPanel = new Graph();
+		this.mapPanel.setPreferredSize(new Dimension(400,500));
+		MouseAdapterClass mouseEvent = new MouseAdapterClass(this.mapPanel);
+		addMouseListener(mouseEvent);
 		
 		setCardLayout();		
 	}
-	/***/
+	/**Sets a layout for the Center panel*/
 	public void setCardLayout()
 	{
-		this.setLayout(cards);
-		cards.show(this, "View_map");
-		add(mapPanel, "map");
-		//add(graphPanel, "graphs");
+		//this.setLayout(cards);
+		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		//cards.show(this, "View_map");
+		add(mapPanel);
 	}
 
 }

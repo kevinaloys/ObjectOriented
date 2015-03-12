@@ -3,7 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-
+/**
+ * @author Varada*/
 public class DisplayBottomMenu extends JPanel
 {
  private CardLayout cardLayout;
@@ -66,7 +67,8 @@ public class DisplayBottomMenu extends JPanel
   * Sets the display panel below to the default card*/
  public void clear()
  {
-	 cardLayout.show(this, "displayMenu");
+	 this.reset();
+	 cardLayout.show(this, "displayMenu");	 
  }
  /**
   * Resets the cafe menu checkboxes*/

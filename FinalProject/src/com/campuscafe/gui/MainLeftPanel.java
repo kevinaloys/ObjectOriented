@@ -12,7 +12,8 @@ import javax.swing.border.*;
 import com.campuscafe.chart.CaloriesBarGraph;
 import com.campuscafe.chart.ExpensesBarGraph;
 
-
+/**
+ * @author Varada*/
 public class MainLeftPanel extends JPanel implements ActionListener
 {
 	private JLabel logo;

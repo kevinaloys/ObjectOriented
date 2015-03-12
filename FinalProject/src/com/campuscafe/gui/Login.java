@@ -10,6 +10,10 @@ import java.io.*;
 import javax.imageio.*;
 import javax.swing.*;
 
+import com.campuscafe.implementation.Driver;
+
+/**
+ * @author Varada*/
 public class Login extends JFrame implements ActionListener
 {
 private String userID;
@@ -57,10 +61,13 @@ private JPanel panel;
 		 userIdField = new JTextField();
 		 userIdField.setFont(new Font("Calibri",Font.BOLD,20));
 		 userIdField.setHorizontalAlignment(JTextField.CENTER);
+		 userIdField.setPreferredSize(new Dimension(80,80));
 		 
 		 expiryDateField = new JTextField();
 		 expiryDateField.setFont(new Font("Calibri",Font.BOLD,20));
 		 expiryDateField.setHorizontalAlignment(JTextField.CENTER);
+		 expiryDateField.setPreferredSize(new Dimension(80,80));
+		 
 		 okay = new JButton("Login");
 		 okay.setFont(new Font("Calibri",Font.BOLD,25));
 		 
@@ -71,19 +78,22 @@ private JPanel panel;
 
 		 panel.setVisible(true);	
 		 //setLocationRelativeTo(null);  
-		 pack();
+		 //pack();
 	}
 	/***/
 	public void setLayout()
 	{
-		//this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		 panel.setLayout(new GridLayout(0,2));
+	
 		 panel.add(userIdLabel);
 		 panel.add(userIdField);
+		 
 		 panel.add(expiryDateLabel);
 		 panel.add(expiryDateField);
-		 panel.add(new JLabel("			"));
+		
+		 panel.add(new JLabel("		")); 
 		 panel.add(okay);
+
 	}
 	/**
 	@Override */
@@ -93,28 +103,44 @@ private JPanel panel;
 		
 		if(command.equals("okay"))
 		{
+			/*int userid = 0 , expiry = 0;
 			//validation of userid and date
-			this.validated=true;
-
+			try
+			{
+				userid = Integer.parseInt(this.userID);
+				expiry = Integer.parseInt(this.expiryDate);
+			}
+			catch(NumberFormatException e)
+			{
+				
+			}
+			
+			Driver driver = new Driver();
+			int getexpiry = driver.getCardExpiry(userid);
+			
+			//checks expiry date on the card
+			if(expiry <= getexpiry)
+			{
+				this.validated = true;
+			}
+			else
+			{
+				this.validated = false;
+			}*/
+			
+			this.validated = true;
+			if(this.validated)
+			{
 			this.userID = this.userIdField.getText();
-			this.setInvisible();
+			this.setVisible(false);
 			SwingUtilities.invokeLater(new Runnable() {
 	            public void run() 
 	            {
 	            	CanteenApplication application = new CanteenApplication(userID);
 	            	application.setVisible(true);	            	
 	            }
-	        });			
+	        });	
+		  } // end this.validate
 		}
-	}
-	/***/
-	public boolean getValidation()
-	{
-		return this.validated;
-	}
-	/***/
-	public void setInvisible()
-	{
-		this.setVisible(false);
 	}
 }

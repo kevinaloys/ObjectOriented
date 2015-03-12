@@ -4,7 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-
+/**
+ * @author Varada*/
 public class CenterPanel extends JPanel
 {
 	private CenterDisplayPanel centerPanel;
@@ -12,8 +13,9 @@ public class CenterPanel extends JPanel
 
 	public CenterPanel()
 	{
-		centerPanel = new CenterDisplayPanel();
 		bottomMenu = new MainBottomPanel();
+		centerPanel = new CenterDisplayPanel(this.bottomMenu);
+		
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(centerPanel);

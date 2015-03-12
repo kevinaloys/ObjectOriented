@@ -8,7 +8,7 @@ import javax.swing.*;
 public class SwitchCanteenMenu extends JPanel implements ActionListener
 {
 private String[] Cafes = { "Benson Center", "Learning Commons Library", "Malley Center", "Leavey Center"};
-private String[] vendingMachines = { "MainVM", "InsideLibraryVM", "LabVM", "BookStoreVM"};
+private String[] vendingMachines = { "Kenna Vending Machine", "Sanfillipo Residence Hall", "LabVM", "BookStoreVM"};
 
 private JComboBox cafeCombo;
 private int cafeIndex=4;	private int vmIndex=4;
@@ -63,6 +63,18 @@ public void actionPerformed(ActionEvent event)
 public DisplayBottomMenu getDisplayMenu()
 {
 	return this.menuDisplay;
+}
+/**Changes the cafe from the map*/
+public void setCafeIndex(int index)
+{
+	this.menuDisplay.reset();
+	this.cafeCombo.setSelectedIndex(index);
+}
+/**changes the vending machine from the map*/
+public void setVMIndex(int index)
+{
+	this.menuDisplay.reset();
+	this.vendingMachine.setSelectedIndex(index);	
 }
 
 }

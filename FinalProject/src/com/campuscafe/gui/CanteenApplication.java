@@ -6,7 +6,8 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.imageio.*;
 import javax.swing.*;
-
+/**
+ * @author Varada */
 public class CanteenApplication extends JFrame
 {
 	private MainLeftPanel mainPanel;
@@ -47,9 +48,7 @@ public class CanteenApplication extends JFrame
 	/***/
 	public void setFrameProperties()
 	{		
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = 1500; int height =1000;
-		screenSize.setSize(width, height);
+		Dimension screenSize = new Dimension(1500,1000);
 		this.setPreferredSize(screenSize);
 		this.mainPanel.setAlignmentY(TOP_ALIGNMENT);
 		
@@ -61,14 +60,10 @@ public class CanteenApplication extends JFrame
 	public static void main(String[] args) 
 	{
     	Login login = new Login();
-    	login.setMinimumSize(new Dimension(500,500));
+    	login.setSize(new Dimension(1500,900));
     	login.setVisible(true);
 	}		
-	/***/
-	public String getUserID()
-	{
-		return this.userID;
-	}		
+			
 }
 
 
