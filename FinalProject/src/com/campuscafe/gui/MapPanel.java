@@ -86,7 +86,7 @@ public class MapPanel extends JPanel
 		}
 		if(this.x > 850 && this.x < 896 && this.y > 380 && this.y < 460)
 		{
-			menu.getCanteenSwitch().setVMIndex(1); //Sanfillipino R Hall
+			menu.getCanteenSwitch().setVMIndex(1); //Sanfillipo R Hall
 			display.showMenu("VM");
 		}
 		
